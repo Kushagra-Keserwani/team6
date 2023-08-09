@@ -5,17 +5,18 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from "./Pages/Home/home";
 import Login from "./Pages/Login/login";
 import AddCustomer from './Pages/AddCustomer/AddCustomer';
-import viewCustomer from './Pages/ViewCustomer/ViewCustomer';
+import ViewCustomer from './Pages/ViewCustomer/ViewCustomer';
+import EditCustomer from './Pages/EditCustomer/EditCustomer';
 
 function App() {
   return (
       <BrowserRouter>
       <Routes>
         <Route exact path="/home" element={<Home/>}></Route>
-        <Route exact path="/" element={<Login/>}></Route>
         <Route exact path="*" element ={<Login/>}></Route>
         <Route exact path ="/addCustomer" element={<AddCustomer/>}></Route>
-        <Route exact path ="/viewCustomer" element={<viewCustomer/>}></Route>
+        <Route exact path ="/viewCustomer" element={<ViewCustomer/>}></Route>
+        <Route exact path ="/editCustomer" element={<EditCustomer/>}></Route>
       </Routes>
       </BrowserRouter>
   );

@@ -1,7 +1,7 @@
 import React from "react";
-import {Link} from "react-router-dom";
-function Login(){
-    return(
+import { Link } from "react-router-dom";
+function Login() {
+    return (
         <div>
             <form>
                 <label>Username</label>
@@ -9,7 +9,7 @@ function Login(){
                 <label>Password</label>
                 <input type="password"></input>
                 <Link to="/home">
-                <button>Login</button>
+                    <button>Login</button>
                 </Link>
             </form>
         </div>

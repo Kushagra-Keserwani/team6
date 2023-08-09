@@ -1,14 +1,28 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-function Home(){
-    return(
+function Home() {
+    return (
         <div>
             <ul>
-                <li>
-                    Add Customer
-                </li>
-                <li>View Customer</li>
-
+                <Link to="/addCustomer">
+                    <li>
+                        Add Customer
+                    </li>
+                </Link>
+                <Link to="/viewCustomer">
+                    <li>
+                        View Customer
+                    </li>
+                </Link>
+                <Link to="/editCustomer">
+                    <li>
+                        Edit Customer
+                    </li>
+                </Link>
+                <Link to="/transactions">
+                    Transactions
+                </Link>
             </ul>
         </div>
     )
