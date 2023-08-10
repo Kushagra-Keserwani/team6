@@ -21,7 +21,9 @@ function Home() {
                     </li>
                 </Link>
                 <Link to="/transactions">
+                    <li>
                     Transactions
+                    </li>
                 </Link>
             </ul>
         </div>
