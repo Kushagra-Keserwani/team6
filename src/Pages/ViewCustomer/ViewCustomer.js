@@ -1,7 +1,7 @@
 import React from "react";
 
-function ViewCustomer(){
-    return(
+function ViewCustomer() {
+    return (
         <div>View Customer</div>
     );
 }
