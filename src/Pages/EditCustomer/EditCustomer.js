@@ -1,7 +1,7 @@
 import React from "react";
 
-function EditCustomer(){
-    return(
+function EditCustomer() {
+    return (
         <div>Edit Customer</div>
     );
 }
