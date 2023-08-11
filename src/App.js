@@ -14,8 +14,8 @@ function App() {
     <BrowserRouter>
       <MenuBar />
       <Routes>
-        <Route exact path="*" element={<Home />}></Route>
-        <Route exact path="/login" element={<Login />}></Route>
+        <Route exact path="/home" element={<Home />}></Route>
+        <Route exact path="*" element={<Login />}></Route>
         <Route exact path="/addCustomer" element={<AddCustomer />}></Route>
         <Route exact path="/viewCustomer" element={<ViewCustomer />}></Route>
         <Route exact path="/editCustomer" element={<EditCustomer />}></Route>
