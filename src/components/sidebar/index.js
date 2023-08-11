@@ -14,7 +14,7 @@ function SideMenuBar() {
         <>
             <div className='navbar'>
                 <Link to="#" className="menu-bars">
-                <FaIcons.FaBars onClick={showSidebar} />
+                    <FaIcons.FaBars onClick={showSidebar} />
                 </Link>
 
             </div>
