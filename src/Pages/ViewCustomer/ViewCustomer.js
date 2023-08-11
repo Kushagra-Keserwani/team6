@@ -1,8 +1,11 @@
 import React from "react";
+import SideMenuBar from "./../../components/sidebar/index"
 
 function ViewCustomer() {
     return (
-        <div>View Customer</div>
+        <div>
+        <SideMenuBar></SideMenuBar>
+        View Customer</div>
     );
 }
 

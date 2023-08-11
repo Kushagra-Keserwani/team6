@@ -1,9 +1,11 @@
 import React from "react";
 import './AddCustomer.css';
+import SideMenuBar from "./../../components/sidebar/index"
 
 function AddCustomer() {
   return (
     <div>
+    <SideMenuBar></SideMenuBar>
       <body>
         <div class="container">
           <h2>Add Customer Details</h2>

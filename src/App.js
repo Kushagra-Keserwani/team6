@@ -8,6 +8,8 @@ import ViewCustomer from './Pages/ViewCustomer/ViewCustomer';
 import EditCustomer from './Pages/EditCustomer/EditCustomer';
 import Transactions from './Pages/Transactions/transactions'
 
+
+
 function App() {
   return (
     <div className='App'>

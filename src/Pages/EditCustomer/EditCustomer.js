@@ -1,8 +1,11 @@
 import React from "react";
-
+import SideMenuBar from "./../../components/sidebar/index"
 function EditCustomer() {
     return (
-        <div>Edit Customer</div>
+        <div>
+                <SideMenuBar></SideMenuBar>
+
+        Edit Customer</div>
     );
 }
 
