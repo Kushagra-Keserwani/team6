@@ -7,21 +7,21 @@ import AddCustomer from './Pages/AddCustomer/AddCustomer';
 import ViewCustomer from './Pages/ViewCustomer/ViewCustomer';
 import EditCustomer from './Pages/EditCustomer/EditCustomer';
 import Transactions from './Pages/Transactions/transactions'
-import MenuBar from './components/navbar';
 
 function App() {
   return (
-    <BrowserRouter>
-      <MenuBar />
-      <Routes>
-        <Route exact path="/home" element={<Home />}></Route>
-        <Route exact path="*" element={<Login />}></Route>
-        <Route exact path="/addCustomer" element={<AddCustomer />}></Route>
-        <Route exact path="/viewCustomer" element={<ViewCustomer />}></Route>
-        <Route exact path="/editCustomer" element={<EditCustomer />}></Route>
-        <Route exact path='/transactions' element={<Transactions />}></Route>
-      </Routes>
-    </BrowserRouter>
+    <div className='App'>
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="*" element={<Home />}></Route>
+          <Route exact path="/login" element={<Login />}></Route>
+          <Route exact path="/addCustomer" element={<AddCustomer />}></Route>
+          <Route exact path="/viewCustomer" element={<ViewCustomer />}></Route>
+          <Route exact path="/editCustomer" element={<EditCustomer />}></Route>
+          <Route exact path='/transactions' element={<Transactions />}></Route>
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 
