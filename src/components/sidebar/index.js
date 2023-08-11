@@ -7,14 +7,14 @@ import { SidebarData } from './sidebarData.js';
 import { IconContext } from 'react-icons';
 import './sidebar.css';
 function SideMenuBar() {
-    const [sidebar, setSidebar] = useState(false);
+    const [sidebar, setSidebar] = useState(true);
 
     const showSidebar = () => setSidebar(!sidebar);
     return (
         <>
             <div className='navbar'>
                 <Link to="#" className="menu-bars">
-                <FaIcons.FaBars onClick={showSidebar} />
+                    <FaIcons.FaBars onClick={showSidebar} />
                 </Link>
 
             </div>
