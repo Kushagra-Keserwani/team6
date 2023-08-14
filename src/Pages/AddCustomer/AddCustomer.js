@@ -7,38 +7,38 @@ function AddCustomer() {
     <div>
     <SideMenuBar></SideMenuBar>
       <body>
-        <div class="container">
+        <div className="container1">
           <h2>Add Customer Details</h2>
           <form action="#" method="post">
-            <div class="form-group">
+            <div className="form-group">
               <label for="name">Name:</label>
-              <input type="text" class="form-control" id="name" ></input>
+              <input type="text" className="form-control1" id="name" ></input>
             </div>
-            <div class="form-group">
+            <div className="form-group">
               <label for="email">Email:</label>
-              <input type="email" class="form-control" id="email" ></input>
+              <input type="email" className="form-control1" id="email" ></input>
             </div>
-            <div class="form-group">
+            <div className="form-group">
               <label for="mobile">Mobile:</label>
-              <input type="text" class="form-control" id="mobile" ></input>
+              <input type="text" className="form-control1" id="mobile" ></input>
             </div>
-            <div class="form-group">
+            <div className="form-group">
               <label for="address">Address:</label>
               <textarea id="address" name="address" rows="4"></textarea>
             </div>
-            <div class="form-group">
+            <div className="form-group">
               <label for="accno">Account Number:</label>
-              <input type="text" class="form-control" id="accno" ></input>
+              <input type="text" className="form-control1" id="accno" ></input>
             </div>
-            <div class="form-group">
+            <div className="form-group">
               <label for="acctype">Account Type:</label>
-              <input type="text" class="form-control" id="acctype" ></input>
+              <input type="text" className="form-control1" id="acctype" ></input>
             </div>
-            <div class="form-group">
+            <div className="form-group">
               <label for="bal">Balance:</label>
-              <input type="text" class="form-control" id="bal" ></input>
+              <input type="text" className="form-control1" id="bal" ></input>
             </div>
-            <button type="submit" class="btn btn-primary">Add</button>
+            <button type="submit" className="btn btn-primary">Add</button>
           </form>
         </div>
       </body>
