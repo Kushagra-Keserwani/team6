@@ -30,7 +30,7 @@ export const SidebarData = [
         cName: 'nav-text'
 
     }, {
-        title: 'Customer Card Details',
+        title: 'Edit Customer',
         path: '/editCustomer',
         icon: <AiIcons.AiFillCreditCard />,
         cName: 'nav-text'

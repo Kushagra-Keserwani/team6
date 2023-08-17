@@ -1,12 +1,15 @@
 import React from "react";
+import axios from "axios";
+import {useEffect, useState} from "react";
 import SideMenuBar from "./../../components/sidebar/index"
-function EditCustomer() {
+import SearchBar from "../../components/searchbar/searchbar";   
+
+function EditCustomer(){
     return (
         <div>
-                <SideMenuBar></SideMenuBar>
-
-        Edit Customer</div>
-    );
-}
+            <h1>Edit Customer</h1>
+        </div>
+    )
+};
 
 export default EditCustomer;
