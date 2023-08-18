@@ -26,7 +26,15 @@ async function saveT(event){
             currency:currency,
             type:type,
             recipient:recipient
-        });
+        },{
+          headers:{
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+      }).then((response)=>{
+            
+        console.log(response.data);
+        setTransactionData(response.data);
+    });
         alert("Transaction Done Successfully.");
         setAccountNum("");
         setTransactionNo("");

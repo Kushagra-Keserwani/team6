@@ -20,8 +20,7 @@ function AddCustomer() {
   
 
   useEffect(() => {
-    (async () => await Load())();
-}, []);
+});
 
 async function Load(){
     const result = await axios.get("https://localhost:7254/api/customer/GetAll");
@@ -42,7 +41,15 @@ async function save(event){
             city:city,
             accounttype:accounttype,
             balance: balance,
-        });
+            headers:{
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+        })
+        .then((response)=>{
+            
+            console.log(response.data);
+            setUsers(response.data);
+        });;
         alert("Customer Added Successfully.");
         setAccountNum("");
         setName("");
@@ -55,77 +62,77 @@ async function save(event){
         setAccountType("");
         setBalance("");
 
-        Load();
+        
     } catch(err){
         alert(err);
     }
 }
 
-async function editCustomer(customers){
-    setName(customers.name);
-    setAddress(customers.address);
-    setEmail(customers.email);
-    setContact(customers.contact);
-    setCardNumber(customers.cardnumber);
-    setPinNum(customers.pinnum);
-    setCity(customers.city);
-    setAccountType(customers.accounttype);
-    setBalance(customers.balance);
-    setAccountNum(customers.accountnum);
-}
+// async function editCustomer(customers){
+//     setName(customers.name);
+//     setAddress(customers.address);
+//     setEmail(customers.email);
+//     setContact(customers.contact);
+//     setCardNumber(customers.cardnumber);
+//     setPinNum(customers.pinnum);
+//     setCity(customers.city);
+//     setAccountType(customers.accounttype);
+//     setBalance(customers.balance);
+//     setAccountNum(customers.accountnum);
+// }
 
-async function deleteCustomer(accountnum)
-{
-    await axios.delete("https://localhost:7254/api/customer/Deletecustomer/" + accountnum);
-    alert("Customer deleted successfully.");
-    setAccountNum("");
-    setName("");
-    setAddress("");
-    setEmail("");
-    setContact("");
-    setCardNumber("");
-    setPinNum("");
-    setCity("");
-    setAccountType("");
-    setBalance("");
-    Load();
-}
+// async function deleteCustomer(accountnum)
+// {
+//     await axios.delete("https://localhost:7254/api/customer/Deletecustomer/" + accountnum);
+//     alert("Customer deleted successfully.");
+//     setAccountNum("");
+//     setName("");
+//     setAddress("");
+//     setEmail("");
+//     setContact("");
+//     setCardNumber("");
+//     setPinNum("");
+//     setCity("");
+//     setAccountType("");
+//     setBalance("");
+//     Load();
+// }
 
-async function update(event){
-    event.preventDefault();
-    try{
-        await axios.patch("https://localhost:7254/api/customer/Updatecustomer/" +customers.find((u) => u.accountnum=== accountnum).accountnum || accountnum,
-        {
-            accountnum: accountnum,
-            name: name,
-            address: address,
-            email: email,
-            contact: contact,
-            cardnumber: cardnumber,
-            pinnum : pinnum,
-            city: city,
-            accounttype : accounttype,
-            balance: balance,
-        }
-        );
-        alert("Customer Updated.");
-        setAccountNum("");
-        setName("");
-        setAddress("");
-        setEmail("");
-        setContact("");
-        setCardNumber("");
-        setPinNum("");
-        setCity("");
-        setAccountType("");
-        setBalance("");
+// async function update(event){
+//     event.preventDefault();
+//     try{
+//         await axios.patch("https://localhost:7254/api/customer/Updatecustomer/" +customers.find((u) => u.accountnum=== accountnum).accountnum || accountnum,
+//         {
+//             accountnum: accountnum,
+//             name: name,
+//             address: address,
+//             email: email,
+//             contact: contact,
+//             cardnumber: cardnumber,
+//             pinnum : pinnum,
+//             city: city,
+//             accounttype : accounttype,
+//             balance: balance,
+//         }
+//         );
+//         alert("Customer Updated.");
+//         setAccountNum("");
+//         setName("");
+//         setAddress("");
+//         setEmail("");
+//         setContact("");
+//         setCardNumber("");
+//         setPinNum("");
+//         setCity("");
+//         setAccountType("");
+//         setBalance("");
 
-        Load();
+//         Load();
 
-    } catch(err){
-        alert(err);
-    }
-  }
+//     } catch(err){
+//         alert(err);
+//     }
+//   }
   return (
     <div>
     <SideMenuBar></SideMenuBar>
