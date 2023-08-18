@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 import {useEffect, useState} from "react";
+import {BiEdit} from "react-icons/bi";
+import { AiFillDelete } from "react-icons/ai";
 import SideMenuBar from "./../../components/sidebar/index"
 import SearchBar from "./../../components/searchbar/searchbar"
 
@@ -46,6 +48,7 @@ async function deleteCustomer(accountnum)
 return (
     <div>
         <SideMenuBar/>
+        <div className="leftSpace">
         <h1>Customer Details</h1>
 <table class="table table-dark" align="center">
 <thead>
@@ -77,13 +80,13 @@ return (
                 <td>{customer.city}</td>
                 <td>{customer.accounttype}</td>
                 <td>{customer.balance}</td>
-
                 <td>
-                    <button
-                    type="button"
-                    class="btn btn-warning"
+                    <BiEdit></BiEdit>
+                </td>
+                <td>
+                    <AiFillDelete
                     onClick={() => deleteCustomer(customer.accountnum)}
-                    >Delete</button>
+                    />
                 </td>
             </tr>
         </tbody>
@@ -91,6 +94,7 @@ return (
 }
 )}
 </table>
+</div>
 </div>
 );
 }

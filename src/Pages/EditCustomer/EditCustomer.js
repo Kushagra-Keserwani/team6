@@ -34,6 +34,7 @@ const EditCustomer = () => {
     return (
       <div>
         <SideMenuBar/>
+        <div className="leftSpace">
         <h1>Customer Details</h1>
         <form>
             <div className="form-group">
@@ -70,6 +71,7 @@ const EditCustomer = () => {
     
                                 </table>
         )}
+        </div>
       </div>
     );
   };

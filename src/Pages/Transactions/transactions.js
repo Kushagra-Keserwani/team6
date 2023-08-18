@@ -38,6 +38,7 @@ function Transactions()
       return (
         <div>
             <SideMenuBar/>
+            <div className="leftSpace">
             <h1>Transaction History</h1>
           <form>
             <div className="form-group">
@@ -88,6 +89,7 @@ function Transactions()
             </table>
 
           )}
+          </div>
         </div>
       );
     };

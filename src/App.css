@@ -1,3 +1,7 @@
+.leftSpace{
+  margin: 20px;
+  margin-left: 270px;
+}
 .App {
  width: 100vw;
  height: 100vh;
