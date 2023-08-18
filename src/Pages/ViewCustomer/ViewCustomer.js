@@ -7,32 +7,51 @@ import SideMenuBar from "./../../components/sidebar/index"
 import SearchBar from "./../../components/searchbar/searchbar"
 
 function ViewCustomer() {    const [accountnum, setAccountNum] = useState("");
-const [name, setName] = useState("");
-const [address, setAddress] = useState("");
-const [email, setEmail] = useState("");
-const [contact, setContact] = useState("");
-const [cardnumber, setCardNumber] = useState("");
-const [pinnum, setPinNum] = useState("");
-const [city, setCity] = useState("");
-const [accounttype, setAccountType] = useState("");
-const [balance, setBalance] = useState("");
-const [customers, setUsers] = useState([]);
+const [customers, setCustomers] = useState([]);
 
-useEffect(() => {
-    axios.get("https://localhost:7254/api/customer/GetAll",{
+const [isLoading, setIsLoading] = useState(false);
+
+  
+const fetchCustomerData = async () => {
+    try {
+      const result = await axios.get(`https://localhost:7254/api/customer/Getcustomer/${accountnum}`,{
         headers:{
             Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
-    })
-    .then((response)=>{
+    });
+      setCustomers([result.data]);
+      
+    } catch (error) {
+      console.error('Error fetching customer data:', error);
+    }};
+
+  useEffect(() => {
+    if (accountnum) {
+      fetchCustomerData();
+    }else{
+      setCustomers([]);
+      Load();
+    }
+  }, [accountnum]);
+// useEffect(() => {
+//     axios.get("https://localhost:7254/api/customer/GetAll",{
+//         headers:{
+//             Authorization: `Bearer ${localStorage.getItem("token")}`,
+//         },
+//     })
+//     .then((response)=>{
         
-        console.log(response.data);
-        setUsers(response.data);
-    });});
+//         console.log(response.data);
+//         setUsers(response.data);
+//     });});
 
 async function Load(){
-    const result = await axios.get("https://localhost:7254/api/customer/GetAll");
-    setUsers(result.data);
+    const result = await axios.get("https://localhost:7254/api/customer/GetAll",{
+        headers:{
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+    });
+    setCustomers(result.data);
     console.log(result.data);
 }
 
@@ -46,28 +65,41 @@ async function deleteCustomer(accountnum)
     .then((response)=>{
         
         console.log(response.data);
-        setUsers(response.data);
     });
     alert("Customer deleted successfully.");
-    setAccountNum("");
-    setName("");
-    setAddress("");
-    setEmail("");
-    setContact("");
-    setCardNumber("");
-    setPinNum("");
-    setCity("");
-    setAccountType("");
-    setBalance("");
-   // Load();
+    Load();
 }
 
 return (
     <div>
         <SideMenuBar/>
-        <div className="leftSpace">
-        <h1>Customer Details</h1>
-<table class="table table-dark" align="center">
+   <div className="leftSpace">
+        <div className="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <form>
+            <div className="mb-3">
+          <label class="form-label">Enter account number -</label>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Type here..."
+            value={accountnum}
+            onChange={(e) => setAccountNum(e.target.value)}
+          /> </div>
+
+        </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="container mt-5">
+            <h4 class="mb-3">Customer Details</h4>
+<table class="table table-bordered table-striped" align="center">
 <thead>
     <tr>
         <th scope="col">Account Number</th>
@@ -102,6 +134,7 @@ return (
                 </td>
                 <td>
                     <AiFillDelete
+
                     onClick={() => deleteCustomer(customer.accountnum)}
                     />
                 </td>
@@ -111,6 +144,7 @@ return (
 }
 )}
 </table>
+</div>
 </div>
 </div>
 );

@@ -5,8 +5,8 @@ import './searchbar.css';
 
 
 function SearchBar() {
-  const [accountNumber, setAccountNumber] = useState('');
-  const [responseData, setResponseData] = useState(null);
+  const [accountNumber, setAccountNumber] = useState("");
+  const [responseData, setResponseData] = useState([]);
 
 
   function handleAccountNumberChange(event) {
@@ -15,8 +15,9 @@ function SearchBar() {
 
   async function searchAccount() {
     try {
-      const response = await axios.get(`your_api_endpoint/${accountNumber}`);
+      const response = await axios.get(`https://localhost:7254/api/customer/Getcustomer/${accountNumber}`);
       setResponseData(response.data);
+      console.log(response.data);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -35,11 +36,9 @@ function SearchBar() {
 
         <button onClick={searchAccount} type='submit'>Get Account Details</button>
         <hr className='my-4' />
-        {responseData}
+        
       </div>
-
-
-
+        
     </div>
   );
 
