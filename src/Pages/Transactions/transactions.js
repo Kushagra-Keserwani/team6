@@ -10,6 +10,8 @@ function Transactions()
     const [amount, setAmount] = useState("");
     const [dateTime, setDateTime] = useState("");
     const [recipient, setRecipient] = useState("");
+    
+    const [cuurency, setCurrency] = useState("");
     const [transactions, setTransactionData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -60,6 +62,7 @@ function Transactions()
                     <th scope="col">Transaction Number</th>
                     <th scope="col">Amount</th>
                     <th scope="col">Type</th>
+                    <th scope="col">Currency</th>
                     <th scope="col">Account Number</th>                  
                     <th scope="col">Date Time</th>
                     <th scope="col">Recipient Acc Num</th>
@@ -72,6 +75,7 @@ function Transactions()
                             <th scope="row">{transaction.transactionNo}</th>
                             <td>{transaction.amount}</td>
                             <td>{transaction.type}</td>
+                            <td>{transaction.currency}</td>
                             <td>{transaction.accountnum}</td>
                             <td>{transaction.dateTime}</td>
                             <td>{transaction.recipient}</td>
