@@ -19,7 +19,11 @@ function Transactions()
         setIsLoading(true);
     
         try {
-          const result = await axios.get(`https://localhost:7254/api/transaction/Gettransaction/${accountNum}`);
+          const result = await axios.get(`https://localhost:7254/api/transaction/Gettransaction/${accountNum}`,{
+            headers:{
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+        });
           setTransactionData(result.data);
           console.log(result.data);
         } catch (error) {

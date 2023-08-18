@@ -1,4 +1,5 @@
 import "./Login.css";
+import axios from "axios";
 import React, { useRef, useState } from "react"
 import Header from "../../components/Header/Header";
 // import { useAuth } from "../../contexts/AuthContext"
@@ -23,8 +24,15 @@ function Login() {
 
         try {
             setLoading(true)
+            await axios.post("https://localhost:7254/api/Auth/register",{
+                username: emailRef.current.value,
+                password: passwordRef.current.value,
+            }).then((response)=>{
+                console.log(response.data);
+                localStorage.setItem("token",response.data);
+            });
             // await signup(emailRef.current.value, passwordRef.current.value)
-            navigate("/")
+            //navigate("/")
         } catch (err) {
             alert(err.message.substring(
                 err.message.indexOf(":") + 1,
@@ -39,8 +47,18 @@ function Login() {
 
         try {
             setLoading(true)
+            await axios.post("https://localhost:7254/api/Auth/login",{
+                username: loginEmailRef.current.value,
+                password: loginPasswordRef.current.value,
+            }).then((response)=>{
+                console.log(response.data);
+                localStorage.setItem("token",response.data);
+            });
             // await login(loginEmailRef.current.value, loginPasswordRef.current.value)
             navigate("/")
+            alert("Login Successfully.");
+            //setUserName("");
+            //setPassword("");
         } catch(err) {
             alert(err.message.substring(
                 err.message.indexOf(":") + 1,
@@ -49,6 +67,8 @@ function Login() {
 
         setLoading(false)
     }
+
+    
 
     return (
         <div>
@@ -71,9 +91,9 @@ function Login() {
                                 <input type="password" title="Confirm password" ref={passwordConfirmRef}  required />
                                 <label>Confirm Password</label>
                             </div>
-                            <Link to="/home">
+                            {/* <Link to="/home"> */}
                             <button className="authBtn" disabled={loading} type="submit">Sign up</button>
-                            </Link>
+                            {/* </Link> */}
                         </form>
                     </div>
 

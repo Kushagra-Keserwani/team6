@@ -19,8 +19,16 @@ const [balance, setBalance] = useState("");
 const [customers, setUsers] = useState([]);
 
 useEffect(() => {
-    (async () => await Load())();
-}, []);
+    axios.get("https://localhost:7254/api/customer/GetAll",{
+        headers:{
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+    })
+    .then((response)=>{
+        
+        console.log(response.data);
+        setUsers(response.data);
+    });});
 
 async function Load(){
     const result = await axios.get("https://localhost:7254/api/customer/GetAll");
@@ -30,7 +38,16 @@ async function Load(){
 
 async function deleteCustomer(accountnum)
 {
-    await axios.delete("https://localhost:7254/api/customer/Deletecustomer/" + accountnum);
+    await axios.delete("https://localhost:7254/api/customer/Deletecustomer/" + accountnum,{
+        headers:{
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+    })
+    .then((response)=>{
+        
+        console.log(response.data);
+        setUsers(response.data);
+    });
     alert("Customer deleted successfully.");
     setAccountNum("");
     setName("");
@@ -42,7 +59,7 @@ async function deleteCustomer(accountnum)
     setCity("");
     setAccountType("");
     setBalance("");
-    Load();
+   // Load();
 }
 
 return (

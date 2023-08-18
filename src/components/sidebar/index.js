@@ -6,6 +6,16 @@ import * as AiIcons from 'react-icons/ai';
 import { SidebarData } from './sidebarData.js';
 import { IconContext } from 'react-icons';
 import './sidebar.css';
+
+
+function dumpToken(props){
+    
+    console.log("Logoooooooout");
+    localStorage.removeItem("token");
+}
+
+
+
 function SideMenuBar() {
     const [sidebar, setSidebar] = useState(true);
 
@@ -26,14 +36,22 @@ function SideMenuBar() {
                         </Link>
                     </li>
                     {SidebarData.map((item, index) => {
+                        {if(item.title=="Logout"){
                         return (
-                            <li key={index} className={item.cName}>
+                            <li key={index} className={item.cName} onClick={() =>dumpToken(item.path)}>
                                 <Link to={item.path}>
                                     {item.icon}
                                     <span>{item.title}</span>
                                 </Link>
                             </li>
-                        );
+                        );}else{
+                            return(<li key={index} className={item.cName}>
+                            <Link to={item.path}>
+                                {item.icon}
+                                <span>{item.title}</span>
+                            </Link>
+                        </li>);
+                        }}
                     })}
                 </ul>
             </nav>
