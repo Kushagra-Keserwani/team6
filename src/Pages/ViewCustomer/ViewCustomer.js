@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 import {useEffect, useState} from "react";
+import {BiEdit} from "react-icons/bi";
+import { AiFillDelete } from "react-icons/ai";
 import SideMenuBar from "./../../components/sidebar/index"
 import SearchBar from "./../../components/searchbar/searchbar"
 
@@ -12,7 +14,11 @@ const [isLoading, setIsLoading] = useState(false);
   
 const fetchCustomerData = async () => {
     try {
-      const result = await axios.get(`https://localhost:7254/api/customer/Getcustomer/${accountnum}`);
+      const result = await axios.get(`https://localhost:7254/api/customer/Getcustomer/${accountnum}`,{
+        headers:{
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+    });
       setCustomers([result.data]);
       
     } catch (error) {
@@ -27,16 +33,39 @@ const fetchCustomerData = async () => {
       Load();
     }
   }, [accountnum]);
+// useEffect(() => {
+//     axios.get("https://localhost:7254/api/customer/GetAll",{
+//         headers:{
+//             Authorization: `Bearer ${localStorage.getItem("token")}`,
+//         },
+//     })
+//     .then((response)=>{
+        
+//         console.log(response.data);
+//         setUsers(response.data);
+//     });});
 
 async function Load(){
-    const result = await axios.get("https://localhost:7254/api/customer/GetAll");
+    const result = await axios.get("https://localhost:7254/api/customer/GetAll",{
+        headers:{
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+    });
     setCustomers(result.data);
     console.log(result.data);
 }
 
 async function deleteCustomer(accountnum)
 {
-    await axios.delete("https://localhost:7254/api/customer/Deletecustomer/" + accountnum);
+    await axios.delete("https://localhost:7254/api/customer/Deletecustomer/" + accountnum,{
+        headers:{
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+    })
+    .then((response)=>{
+        
+        console.log(response.data);
+    });
     alert("Customer deleted successfully.");
     Load();
 }
@@ -44,6 +73,7 @@ async function deleteCustomer(accountnum)
 return (
     <div>
         <SideMenuBar/>
+   <div className="leftSpace">
         <div className="container mt-5">
             <div class="row justify-content-center">
                 <div class="col-md-6">
@@ -99,13 +129,14 @@ return (
                 <td>{customer.city}</td>
                 <td>{customer.accounttype}</td>
                 <td>{customer.balance}</td>
-
                 <td>
-                    <button
-                    type="button"
-                    class="btn btn-danger"
+                    <BiEdit></BiEdit>
+                </td>
+                <td>
+                    <AiFillDelete
+
                     onClick={() => deleteCustomer(customer.accountnum)}
-                    >Delete</button>
+                    />
                 </td>
             </tr>
         </tbody>
@@ -113,6 +144,7 @@ return (
 }
 )}
 </table>
+</div>
 </div>
 </div>
 );

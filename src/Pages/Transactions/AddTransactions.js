@@ -12,6 +12,7 @@ function AddTransactions() {
     const [dateTime, setDateTime] = useState("");
     const [type, setType] = useState("");
     const [recipient, setRecipient] = useState("");
+    const [currency, setCurrency] = useState("");
     const [transactions, setTransactionData] = useState([]);
   
 
@@ -22,13 +23,23 @@ async function saveT(event){
             accountnum:accountnum,
             amount:amount,
             dateTime:dateTime,
+            currency:currency,
             type:type,
             recipient:recipient
-        });
+        },{
+          headers:{
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+      }).then((response)=>{
+            
+        console.log(response.data);
+        setTransactionData(response.data);
+    });
         alert("Transaction Done Successfully.");
         setAccountNum("");
         setTransactionNo("");
         setAmount("");
+        setCurrency("");
         setType("");
         setDateTime("");
         setRecipient("");
@@ -80,6 +91,19 @@ return (
                             setType(event.target.value);}}
                      />
             </div>
+                        
+            <div className="form-group">
+              <label for="currency">Currency:</label>
+              <input
+                        type="text"
+                        className="form-control1"
+                        id="cuurency"
+                        value ={currency}
+                        onChange={(event) => {
+                            setCurrency(event.target.value);}}
+                     />
+            </div>
+
             <div className="form-group">
               <label for="amount">Amount:</label>
               <input 

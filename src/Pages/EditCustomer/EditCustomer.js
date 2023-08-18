@@ -34,6 +34,7 @@ const EditCustomer = () => {
     return (
         <div>
             <SideMenuBar/>
+       <div className="leftSpace">
         <div className="container mt-5">
             <div class="row justify-content-center">
                 <div class="col-md-6">
@@ -116,10 +117,14 @@ const EditCustomer = () => {
             </table>
             </div>
           )}
+          </div>
         </div>
       );
     };
     
+
     export default EditCustomer;
+
+ 
   
   
