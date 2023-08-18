@@ -31,30 +31,43 @@ function Transactions()
         if (accountNum) {
           fetchTransactionData();
         }
+        else{
+            setTransactionData([]);
+        }
       }, [accountNum]);
     
       return (
         <div>
             <SideMenuBar/>
-            <h1>Transaction History</h1>
-          <form>
-            <div className="form-group">
-            <label>Account Number: </label>
-            <input
-              type="text"
-              className="form-control1"
-              value={accountNum}
-              onChange={(e) => setAccountNum(e.target.value)}
-            /></div>
-            <button type="button" className="btn btn-primary" onClick={fetchTransactionData}>
-              Fetch Transaction
-            </button>
+            <div className="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <form>
+            <div className="mb-3">
+          <label class="form-label">Enter account number -</label>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Type here..."
+            value={accountNum}
+            onChange={(e) => setAccountNum(e.target.value)}
+          /> </div>
           </form>
+          </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     
           {isLoading ? (
             <p>Loading...</p>
           ) : (
-            <table class="table table-dark" align="center">
+            <div class="container mt-5">
+              <h4 class="mb-3">Transaction Details</h4>
+            <table class="table table-bordered table-striped" align="center">
             <thead>
                 <tr>
                     <th scope="col">Transaction Number</th>
@@ -82,7 +95,7 @@ function Transactions()
             }
             )}
             </table>
-
+            </div>
           )}
         </div>
       );
