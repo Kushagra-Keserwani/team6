@@ -23,7 +23,15 @@ export const SidebarData = [
         icon: <AiIcons.AiOutlineFileSearch />,
         cName: 'nav-text'
 
-    }, {
+    }, 
+    {
+        title: 'Add Transactions',
+        path: '/addTransactions',
+        icon: <AiIcons.AiOutlineDollar />,
+        cName: 'nav-text'
+
+    }, 
+    {
         title: 'Transactions',
         path: '/transactions',
         icon: <AiIcons.AiOutlineDollar />,

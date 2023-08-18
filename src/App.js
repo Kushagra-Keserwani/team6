@@ -6,7 +6,8 @@ import Login from "./Pages/Login/login";
 import AddCustomer from './Pages/AddCustomer/AddCustomer';
 import ViewCustomer from './Pages/ViewCustomer/ViewCustomer';
 import EditCustomer from './Pages/EditCustomer/EditCustomer';
-import Transactions from './Pages/Transactions/transactions'
+import Transactions from './Pages/Transactions/transactions';
+import AddTransactions from './Pages/Transactions/AddTransactions';
 
 
 
@@ -20,6 +21,7 @@ function App() {
           <Route exact path="/addCustomer" element={<AddCustomer />}></Route>
           <Route exact path="/viewCustomer" element={<ViewCustomer />}></Route>
           <Route exact path="/editCustomer" element={<EditCustomer />}></Route>
+          <Route exact path='/addTransactions' element={<AddTransactions />}></Route>
           <Route exact path='/transactions' element={<Transactions />}></Route>
         </Routes>
       </BrowserRouter>
