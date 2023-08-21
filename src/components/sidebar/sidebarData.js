@@ -27,14 +27,14 @@ export const SidebarData = [
     {
         title: 'Balance Check',
         path: '/balancecheck',
-        icon: <AiIcons.AiOutlineFileSearch />,
+        icon: <AiIcons.AiFillDollarCircle />,
         cName: 'nav-text'
 
     },
     {
         title: 'Add Transactions',
         path: '/addTransactions',
-        icon: <AiIcons.AiOutlineDollar />,
+        icon: <AiIcons.GrTransaction />,
         cName: 'nav-text'
 
     }, 
@@ -44,7 +44,15 @@ export const SidebarData = [
         icon: <AiIcons.AiOutlineDollar />,
         cName: 'nav-text'
 
-    }, {
+    }, 
+    {
+        title: 'Pin Change',
+        path: '/pinchange',
+        icon: <AiIcons.AiFillLock />,
+        cName: 'nav-text'
+
+    }, 
+    {
         title: 'Edit Customer',
         path: '/editCustomer',
         icon: <AiIcons.AiFillCreditCard />,
