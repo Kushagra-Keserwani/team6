@@ -11,12 +11,29 @@ function AddCustomer() {
   const [address, setAddress] = useState("");
   const [email, setEmail] = useState("");
   const [contact, setContact] = useState("");
-  const [cardnumber, setCardNumber] = useState("");
-  const [pinnum, setPinNum] = useState("");
+  const [cardnumber, setCardNumber] = useState("0");
+  const [pinnum, setPinNum] = useState("0000");
   const [city, setCity] = useState("");
-  const [accounttype, setAccountType] = useState("");
-  const [balance, setBalance] = useState("");
+  const [accounttype, setAccountType] = useState("0");
+  const [balance, setBalance] = useState("0");
   const [customers, setUsers] = useState([]);
+  const [errors, setErrors] = useState(null);
+
+  function errorFunc(error){
+    if (error.response) { // status code out of the range of 2xx
+
+      console.log("Data :" , error.response.data);
+      console.log("Status :" + error.response.status);
+      if(error.response.status === 400 && error.response.data){
+          setErrors(error.response.data.errors);
+          
+      }
+    } else if (error.request) { // The request was made but no response was received
+      console.log(error.request);
+    } else {// Error on setting up the request
+      console.log('Error', error.message);
+    }
+  }
   
 
   useEffect(() => {
@@ -65,6 +82,7 @@ async function save(event){
         
     } catch(err){
         alert(err);
+        errorFunc(err);
     }
 }
 
@@ -175,6 +193,7 @@ async function save(event){
                         }}
                         />
             </div>
+            <p className="error">{errors?.email}</p>
             <div className="form-group">
               <label for="mobile">Mobile:</label>
               <input 
@@ -187,6 +206,7 @@ async function save(event){
                         }}
                         />
             </div>
+            <p className="error">{errors?.contact}</p>
             <div className="form-group">
               <label for="address">Address:</label>
               <textarea 
@@ -200,6 +220,7 @@ async function save(event){
                         }}
                         ></textarea>              
             </div>
+            <p>{errors?.address}</p>
             <div className="form-group">
               <label for="cardnumber">Card Number:</label>
               <input 
@@ -212,6 +233,7 @@ async function save(event){
                         }}
                         />
             </div>
+            <p className="error">{errors?.cardnumber}</p>
             <div className="form-group">
                         <label for="pinnum">Pin Number:</label>
                         <input
@@ -224,6 +246,7 @@ async function save(event){
                         }}
                          />
                     </div>
+                    <p className="error">{errors?.pinnum}</p>
 
                     <div className="form-group">
                         <label for="city">City:</label>
@@ -236,10 +259,20 @@ async function save(event){
                             setCity(event.target.value);
                         }}
                         />
-                    </div>            
+                    </div>   
+                    <p className="error">{errors?.city}</p>         
                     <div className="form-group">
-                        <label for="accounttype">Account Type:</label>
-                        <input 
+                        {/* <label for="accounttype">Account Type:</label> */}
+                        <label id="Account Type">Type:
+                <select value={accounttype}
+                  onChange={(event) => {
+                    setAccountType(event.target.value)
+                  }}>
+                  <option value="0"> Savings</option>
+                  <option value="1"> Checking</option>
+                </select>
+              </label>
+                        {/* <input 
                         type="text"
                         className="form-control1"
                         id="accounttype"
@@ -247,8 +280,9 @@ async function save(event){
                         onChange={(event) => {
                             setAccountType(event.target.value);
                         }}
-                        />
+                        /> */}
                     </div>
+                    <p className="error">{errors?.accounttype}</p>
                     <div className="form-group">
                             <label for="balance">Balance:</label>
                             <input
@@ -261,6 +295,7 @@ async function save(event){
                             }}
                             />
                     </div>
+                    <p className="error">{errors?.balance}</p>
             <button className="btn btn-primary" onClick={save}>Add</button>
           </form>
         </div>

@@ -127,7 +127,9 @@ return (
                 {/* <td>{customer.cardnumber}</td> */}
                 {/* <td>{customer.pinnum}</td> */}
                 <td>{customer.city}</td>
-                <td>{customer.accounttype}</td>
+                {customer.accounttype===0 && <td>{"Savings"}</td>}
+                {customer.accounttype===1 && <td>{"Checking"}</td>}
+                {/* <td>{customer.accounttype}</td> */}
                 {/* <td>{customer.balance}</td> */}
                 <td>
                     <BiEdit></BiEdit>
