@@ -220,7 +220,7 @@ async function save(event){
                         }}
                         ></textarea>              
             </div>
-            <p>{errors?.address}</p>
+            <p className="error">{errors?.address}</p>
             <div className="form-group">
               <label for="cardnumber">Card Number:</label>
               <input 
