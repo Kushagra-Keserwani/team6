@@ -263,15 +263,17 @@ async function save(event){
                     <p className="error">{errors?.city}</p>         
                     <div className="form-group">
                         {/* <label for="accounttype">Account Type:</label> */}
-                        <label id="Account Type">Type:
+                        <label for="Account Type">Type:</label>
                 <select value={accounttype}
+                className="form-control1"
+                id="Account Type"
                   onChange={(event) => {
                     setAccountType(event.target.value)
                   }}>
                   <option value="0"> Savings</option>
                   <option value="1"> Checking</option>
                 </select>
-              </label>
+              
                         {/* <input 
                         type="text"
                         className="form-control1"
