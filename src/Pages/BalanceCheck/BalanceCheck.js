@@ -6,7 +6,7 @@ import { AiFillDelete } from "react-icons/ai";
 import SideMenuBar from "./../../components/sidebar/index"
 import SearchBar from "./../../components/searchbar/searchbar"
 
-function ViewCustomer() {    const [accountnum, setAccountNum] = useState("");
+function BalanceCheck() {    const [accountnum, setAccountNum] = useState("");
 const [customers, setCustomers] = useState([]);
 
 const [isLoading, setIsLoading] = useState(false);
@@ -104,15 +104,15 @@ return (
     <tr>
         <th scope="col">Account Number</th>
         <th scope="col">Name</th>
-        <th scope="col">Address</th>
-        <th scope="col">Email</th>                  
+        {/* <th scope="col">Address</th> */}
+        {/* <th scope="col">Email</th>                   */}
         <th scope="col">Contact</th>
         {/* <th scope="col">Card Number</th>
         <th scope="col">Pin Number</th> */}
-        <th scope="col">City</th>
-        <th scope="col">Account Type</th> 
-        {/* <th scope="col">Balance</th>                                        */}
-        <th scope="col">Option</th>
+        {/* <th scope="col">City</th>
+        <th scope="col">Account Type</th>  */}
+        <th scope="col">Balance</th>                                       
+        {/* <th scope="col">Option</th> */}
     </tr>
 </thead>
 {customers.map(function fn(customer){
@@ -121,14 +121,14 @@ return (
             <tr>
                 <th scope="row">{customer.accountnum}</th>
                 <td>{customer.name}</td>
-                <td>{customer.address}</td>
-                <td>{customer.email}</td>
+                {/* <td>{customer.address}</td> */}
+                {/* <td>{customer.email}</td> */}
                 <td>{customer.contact}</td>
-                {/* <td>{customer.cardnumber}</td> */}
-                {/* <td>{customer.pinnum}</td> */}
+                {/* <td>{customer.cardnumber}</td>
+                <td>{customer.pinnum}</td>
                 <td>{customer.city}</td>
-                <td>{customer.accounttype}</td>
-                {/* <td>{customer.balance}</td> */}
+                <td>{customer.accounttype}</td> */}
+                <td>{customer.balance}</td>
                 <td>
                     <BiEdit></BiEdit>
                 </td>
@@ -150,4 +150,4 @@ return (
 );
 }
 
-export default ViewCustomer;
+export default BalanceCheck;

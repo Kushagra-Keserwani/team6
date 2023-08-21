@@ -25,6 +25,13 @@ export const SidebarData = [
 
     }, 
     {
+        title: 'Balance Check',
+        path: '/balancecheck',
+        icon: <AiIcons.AiOutlineFileSearch />,
+        cName: 'nav-text'
+
+    },
+    {
         title: 'Add Transactions',
         path: '/addTransactions',
         icon: <AiIcons.AiOutlineDollar />,
