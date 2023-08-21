@@ -15,9 +15,25 @@ function AddTransactions() {
   const [recipient, setRecipient] = useState("0");
   const [currency, setCurrency] = useState("Dollar");
   const [transactions, setTransactionData] = useState([]);
+  const [errors, setErrors] = useState(null);
 
+  
+  function errorFunc(error){
+    if (error.response) { // status code out of the range of 2xx
 
-
+      console.log("Data :" , error.response.data);
+      console.log("Status :" + error.response.status);
+      if(error.response.status === 400 && error.response.data){
+          setErrors(error.response.data.errors);
+          
+      }
+    } else if (error.request) { // The request was made but no response was received
+      console.log(error.request);
+    } else {// Error on setting up the request
+      console.log('Error', error.message);
+    }
+  }
+ 
   async function saveT(event) {
     event.preventDefault();
     try {
@@ -54,6 +70,7 @@ function AddTransactions() {
 
     } catch (err) {
       alert(err);
+      errorFunc(err);
     }
   }
 

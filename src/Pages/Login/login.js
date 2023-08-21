@@ -18,19 +18,19 @@ function Login() {
     async function handleSignUp(e) {
         e.preventDefault()
 
-        if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+        if (loginPasswordRef.current.value !== passwordConfirmRef.current.value) {
             return alert("Passwords do not match")
         }
 
         try {
             setLoading(true)
             await axios.post("https://localhost:7254/api/Auth/register",{
-                username: emailRef.current.value,
-                password: passwordRef.current.value,
+                username: loginEmailRef.current.value,
+                password: loginPasswordRef.current.value,
             }).then((response)=>{
                 console.log(response.data);
-                localStorage.setItem("token",response.data);
             });
+            handleLogin(e)
             // await signup(emailRef.current.value, passwordRef.current.value)
             //navigate("/")
         } catch (err) {
@@ -80,11 +80,11 @@ function Login() {
                         <form onSubmit={handleSignUp}>
                             <label for="chk" className="sig">Sign up</label>
                             <div className="user-box">
-                                <input type="text" title="Email" ref={emailRef} required />
+                                <input type="text" title="Email" ref={loginEmailRef} required />
                                 <label>Email</label>
                             </div>
                             <div className="user-box">
-                                <input type="password" title="Password" ref={passwordRef} required />
+                                <input type="password" title="Password" ref={loginPasswordRef} required />
                                 <label>Password</label>
                             </div>
                             <div className="user-box">
