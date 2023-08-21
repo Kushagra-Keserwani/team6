@@ -55,7 +55,7 @@ function Login() {
                 localStorage.setItem("token",response.data);
             });
             // await login(loginEmailRef.current.value, loginPasswordRef.current.value)
-            navigate("/")
+            navigate("/home")
             alert("Login Successfully.");
             //setUserName("");
             //setPassword("");
