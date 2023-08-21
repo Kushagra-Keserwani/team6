@@ -33,17 +33,6 @@ const fetchCustomerData = async () => {
       Load();
     }
   }, [accountnum]);
-// useEffect(() => {
-//     axios.get("https://localhost:7254/api/customer/GetAll",{
-//         headers:{
-//             Authorization: `Bearer ${localStorage.getItem("token")}`,
-//         },
-//     })
-//     .then((response)=>{
-        
-//         console.log(response.data);
-//         setUsers(response.data);
-//     });});
 
 async function Load(){
     const result = await axios.get("https://localhost:7254/api/customer/GetAll",{
@@ -53,21 +42,6 @@ async function Load(){
     });
     setCustomers(result.data);
     console.log(result.data);
-}
-
-async function deleteCustomer(accountnum)
-{
-    await axios.delete("https://localhost:7254/api/customer/Deletecustomer/" + accountnum,{
-        headers:{
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-    })
-    .then((response)=>{
-        
-        console.log(response.data);
-    });
-    alert("Customer deleted successfully.");
-    Load();
 }
 
 return (
@@ -104,15 +78,8 @@ return (
     <tr>
         <th scope="col">Account Number</th>
         <th scope="col">Name</th>
-        {/* <th scope="col">Address</th> */}
-        {/* <th scope="col">Email</th>                   */}
         <th scope="col">Contact</th>
-        {/* <th scope="col">Card Number</th>
-        <th scope="col">Pin Number</th> */}
-        {/* <th scope="col">City</th>
-        <th scope="col">Account Type</th>  */}
         <th scope="col">Balance</th>                                       
-        {/* <th scope="col">Option</th> */}
     </tr>
 </thead>
 {customers.map(function fn(customer){
@@ -121,23 +88,8 @@ return (
             <tr>
                 <th scope="row">{customer.accountnum}</th>
                 <td>{customer.name}</td>
-                {/* <td>{customer.address}</td> */}
-                {/* <td>{customer.email}</td> */}
                 <td>{customer.contact}</td>
-                {/* <td>{customer.cardnumber}</td>
-                <td>{customer.pinnum}</td>
-                <td>{customer.city}</td>
-                <td>{customer.accounttype}</td> */}
                 <td>{customer.balance}</td>
-                <td>
-                    <BiEdit></BiEdit>
-                </td>
-                <td>
-                    <AiFillDelete
-
-                    onClick={() => deleteCustomer(customer.accountnum)}
-                    />
-                </td>
             </tr>
         </tbody>
     );
