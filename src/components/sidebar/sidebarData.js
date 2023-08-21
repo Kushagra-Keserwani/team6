@@ -34,7 +34,7 @@ export const SidebarData = [
     {
         title: 'Add Transactions',
         path: '/addTransactions',
-        icon: <AiIcons.GrTransaction />,
+        icon: <AiIcons.AiOutlineTransaction />,
         cName: 'nav-text'
 
     }, 
