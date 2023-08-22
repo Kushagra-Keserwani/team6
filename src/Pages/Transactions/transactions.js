@@ -10,6 +10,9 @@ function Transactions()
     const [amount, setAmount] = useState("");
     const [dateTime, setDateTime] = useState("");
     const [recipient, setRecipient] = useState("");
+    const [startDate,setStartDate] = useState("2023-08-15");
+    
+    const [endDate,setendDate] = useState("2024-01-01");
     
     const [cuurency, setCurrency] = useState("");
     const [transactions, setTransactionData] = useState([]);
@@ -19,7 +22,7 @@ function Transactions()
         setIsLoading(true);
     
         try {
-          const result = await axios.get(`https://localhost:7254/api/transaction/Gettransaction/${accountNum}`,{
+          const result = await axios.get(`https://localhost:7254/api/transaction/GetStatement/${accountNum}/${startDate}/${endDate}`,{
             headers:{
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
@@ -40,7 +43,7 @@ function Transactions()
         else{
             setTransactionData([]);
         }
-      }, [accountNum]);
+      }, [accountNum,startDate,endDate]);
     
       return (
         <div>
@@ -60,6 +63,24 @@ function Transactions()
             placeholder="Type here..."
             value={accountNum}
             onChange={(e) => setAccountNum(e.target.value)}
+          /> </div>
+          <div className="mb-3">
+          <label class="form-label">Enter Start Date -</label>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Type here..."
+            value={startDate}
+            onChange={(e) => setStartDate(e.target.value)}
+          /> </div>
+          <div className="mb-3">
+          <label class="form-label">Enter End Date -</label>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Type here..."
+            value={endDate}
+            onChange={(e) => setendDate(e.target.value)}
           /> </div>
           </form>
           </div>
