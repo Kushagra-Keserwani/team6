@@ -13,6 +13,7 @@ const PinChange = () => {
     const [isLoading, setIsLoading] = useState(false);
 
     const fetchCustomerData = async () => {
+    
         setIsLoading(true);
 
         try {
@@ -28,12 +29,16 @@ const PinChange = () => {
     const validateOldPinandSetNewPin = async () => {
         if(Object.keys(customer).length > 0)
         {
-            if(customer.pinnum === oldpin)
+            console.log(customer);
+            console.log(typeof oldpin);
+            console.log(typeof newpin);
+            console.log(typeof customer.pinnum);
+            console.log(customer.pinnum == oldpin);
+            if(customer.pinnum == oldpin)
             {
                 if(newpin===renewpin)
                 {
-                    const setpinresult = await axios.patch(`https://localhost:7254/api/customer/setPin/${accountNum}/${newpin}`);
-                    
+                    const setpinresult = await axios.patch(`https://localhost:7254/api/customer/SetPin/${accountNum}/${newpin}`);
                     if(setpinresult.data===true)
                     {
                         alert("Pin has been changed successfully!.");
