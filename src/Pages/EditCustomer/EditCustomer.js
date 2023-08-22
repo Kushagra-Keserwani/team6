@@ -13,6 +13,10 @@ const EditCustomer = () => {
   const [email, setEmail] = useState("");
   const [contact, setContact] = useState("");
   const [city, setCity] = useState("");
+  const [accounttype, setAccountType] = useState("");
+  const [balance, setBalance] = useState("");
+  const [cardnumber, setCardNumber] = useState("");
+  const [pinnum, setPinNum] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const fetchCustomerData = async () => {
@@ -20,36 +24,48 @@ const EditCustomer = () => {
 
     try {
       const result = await axios.get(`https://localhost:7254/api/customer/Getcustomer/${accountNum}`);
-      setCustomerData(result.data);
+      // setCustomerData(result.data);
+      setName(result.data.name);
+      setAddress(result.data.address);
+      setEmail(result.data.email);
+      setContact(result.data.contact);
+      setCardNumber(result.data.cardnumber);
+      setPinNum(result.data.pinnum);
+      setCity(result.data.city);
+      setAccountType(result.data.accounttype);
+      setBalance(result.data.balance);
     } catch (error) {
       console.error('Error fetching customer data:', error);
     } finally {
       setIsLoading(false);
     }
   };
-async function update(event){
+  async function update(event) {
     event.preventDefault();
-    try{
-        console.log(name,city,email,address,contact,accountNum);
-        await axios.patch("https://localhost:7254/api/customer/Updatecustomer/" +customer.find((u) => u.accountNum=== accountNum).accountNum || accountNum,
+    try {
+      console.log(name, city, email, address, contact, accountNum);
+      await axios.patch("https://localhost:7254/api/customer/Updatecustomer/",
         {
-            accountnum: accountNum,
             name: name,
             address: address,
             email: email,
             contact: contact,
-            city: city,
+            cardnumber: cardnumber,
+            pinnum : pinnum,
+            city:city,
+            accounttype:accounttype,
+            balance: balance,
         }
-        );
-        alert("Customer Updated.");
-        setAccountNum("");
-        setName("");
-        setAddress("");
-        setEmail("");
-        setContact("");
-        setCity("");
-    } catch(err){
-        alert(err);
+      );
+      alert("Customer Updated.");
+      setAccountNum("");
+      setName("");
+      setAddress("");
+      setEmail("");
+      setContact("");
+      setCity("");
+    } catch (err) {
+      alert(err);
     }
   }
 
@@ -59,11 +75,15 @@ async function update(event){
     } else {
       setCustomerData({});
       setAccountNum("");
-        setName("");
-        setAddress("");
-        setEmail("");
-        setContact("");
-        setCity("");
+      setName("");
+      setAddress("");
+      setEmail("");
+      setContact("");
+      setCardNumber("");
+      setPinNum("");
+      setCity("");
+      setAccountType("");
+      setBalance("");
     }
   }, [accountNum]);
 
@@ -118,8 +138,8 @@ async function update(event){
                           type="text"
                           className="form-control1"
                           id="name"
-                          defaultValue={customer.name}
-                          onChange={(e)=>{setName(e.target.value)}}
+                          defaultValue={name}
+                          onChange={(e) => { setName(e.target.value) }}
                         />
                       </div>
                     </form></td>
@@ -132,8 +152,8 @@ async function update(event){
                         type="text"
                         className="form-control1"
                         id="address"
-                        defaultValue={customer.address}
-                        onChange={(e)=>{setAddress(e.target.value)}}
+                        defaultValue={address}
+                        onChange={(e) => { setAddress(e.target.value) }}
 
                       />
                     </div>
@@ -148,8 +168,8 @@ async function update(event){
                           type="text"
                           className="form-control1"
                           id="email"
-                          defaultValue={customer.email}
-                          onChange={(e)=>{setEmail(e.target.value)}}
+                          defaultValue={email}
+                          onChange={(e) => { setEmail(e.target.value) }}
 
                         />
                       </div>
@@ -165,8 +185,8 @@ async function update(event){
                           type="text"
                           className="form-control1"
                           id="contact"
-                          defaultValue={customer.contact}
-                          onChange={(e)=>{setContact(e.target.value)}}
+                          defaultValue={contact}
+                          onChange={(e) => { setContact(e.target.value) }}
                         />
                       </div>
                     </form>
@@ -181,8 +201,8 @@ async function update(event){
                           type="text"
                           className="form-control1"
                           id="city"
-                          defaultValue={customer.city}
-                          onChange={(e)=>{setCity(e.target.value)}}
+                          defaultValue={city}
+                          onChange={(e) => { setCity(e.target.value) }}
                         />
                       </div>
                     </form>
