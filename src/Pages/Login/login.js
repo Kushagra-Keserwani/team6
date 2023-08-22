@@ -18,15 +18,16 @@ function Login() {
     async function handleSignUp(e) {
         e.preventDefault()
 
-        if (loginPasswordRef.current.value !== passwordConfirmRef.current.value) {
+        if (passwordRef.current.value !== passwordConfirmRef.current.value) {
             return alert("Passwords do not match")
         }
-
+            loginEmailRef.current=emailRef.current;
+            loginPasswordRef.current=passwordRef.current;
         try {
             setLoading(true)
             await axios.post("https://localhost:7254/api/Auth/register",{
-                username: loginEmailRef.current.value,
-                password: loginPasswordRef.current.value,
+                username: emailRef.current.value,
+                password: passwordRef.current.value,
             }).then((response)=>{
                 console.log(response.data);
             });
@@ -34,9 +35,7 @@ function Login() {
             // await signup(emailRef.current.value, passwordRef.current.value)
             //navigate("/")
         } catch (err) {
-            alert(err.message.substring(
-                err.message.indexOf(":") + 1,
-                err.message.lastIndexOf("(")))
+            alert(err)
         }
 
         setLoading(false)
@@ -60,9 +59,7 @@ function Login() {
             //setUserName("");
             //setPassword("");
         } catch(err) {
-            alert(err.message.substring(
-                err.message.indexOf(":") + 1,
-                err.message.lastIndexOf("(")))
+            alert(err)
         }
 
         setLoading(false)
@@ -80,11 +77,11 @@ function Login() {
                         <form onSubmit={handleSignUp}>
                             <label for="chk" className="sig">Sign up</label>
                             <div className="user-box">
-                                <input type="text" title="Email" ref={loginEmailRef} required />
+                                <input type="text" title="Email" ref={emailRef} required />
                                 <label>Email</label>
                             </div>
                             <div className="user-box">
-                                <input type="password" title="Password" ref={loginPasswordRef} required />
+                                <input type="password" title="Password" ref={passwordRef} required />
                                 <label>Password</label>
                             </div>
                             <div className="user-box">

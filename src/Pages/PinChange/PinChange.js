@@ -28,11 +28,12 @@ const PinChange = () => {
     const validateOldPinandSetNewPin = async () => {
         if(Object.keys(customer).length > 0)
         {
-            if(customer.pinnum === oldpin)
+            if(customer.pinnum == oldpin)
             {
                 if(newpin===renewpin)
                 {
-                    const setpinresult = await axios.patch(`https://localhost:7254/api/customer/setPin/${accountNum}/${newpin}`);
+                    
+                    const setpinresult = await axios.patch(`https://localhost:7254/api/customer/SetPin/${accountNum}/${newpin}`);
                     
                     if(setpinresult.data===true)
                     {
@@ -51,6 +52,7 @@ const PinChange = () => {
                 }
             }
             else{
+                console.log(customer.pinnum,oldpin);
                 alert("Enter correct PIN number.");
                 setNewPin("");
                 setReNewPin("");
