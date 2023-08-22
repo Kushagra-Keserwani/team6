@@ -23,7 +23,7 @@ function App() {
           <Route element={<PrivateRoutes />}>
             <Route exact path="/home" element={<Home />}></Route>
             <Route exact path="/viewCustomer" element={<ViewCustomer />}></Route>
-            <Route exact path="/editCustomer" element={<EditCustomer />}></Route>
+            <Route exact path="/editCustomer/:data?" element={<EditCustomer />}></Route>
             <Route exact path='/balancecheck' element={<BalanceCheck />}></Route>
             <Route exact path='/addTransactions' element={<AddTransactions />}></Route>
             <Route exact path='/transactions' element={<Transactions />}></Route>

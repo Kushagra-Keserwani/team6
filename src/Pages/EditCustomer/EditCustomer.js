@@ -2,11 +2,15 @@ import React from "react";
 import axios from "axios";
 import "../AddCustomer/AddCustomer.css";
 import { useEffect, useState } from "react";
+import {useParams} from 'react-router-dom';
 import SideMenuBar from "./../../components/sidebar/index"
 import SearchBar from "../../components/searchbar/searchbar";
 
 const EditCustomer = () => {
-  const [accountNum, setAccountNum] = useState("");
+  const {data} = useParams();
+  //console.log(data);
+  // const [data, setData] = useState(useParams());
+  const [accountNum, setAccountNum] = useState(data?data:"");
   const [customer, setCustomerData] = useState({});
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
@@ -71,6 +75,12 @@ const EditCustomer = () => {
   }
 
   useEffect(() => {
+    console.log(data);
+    // if(data)
+    // {
+    //   setAccountNum(data);
+    //   data = null;
+    // }
     if (accountNum) {
       fetchCustomerData();
     } else {

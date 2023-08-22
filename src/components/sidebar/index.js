@@ -27,7 +27,7 @@ function SideMenuBar() {
                 <Link to="#" className="menu-bars">
                     <FaIcons.FaBars onClick={showSidebar} />                  
                 </Link>
-                <div className='heading'><Link to='/home'>ATM Banking System</Link></div>
+                {/* <div className='heading'><Link to='/home'>ATM Banking App</Link></div> */}
 
 
             </div>
