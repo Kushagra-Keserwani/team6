@@ -44,10 +44,9 @@ const EditCustomer = () => {
       setIsLoading(false);
     }
   };
-  async function update(event) {
+  const update = async (event) => {
     event.preventDefault();
     try {
-      console.log(name, city, email, address, contact, accountNum);
       await axios.patch(`https://localhost:7254/api/customer/Updatecustomer/${accountNum}`,
         {
           accountnum: accountNum,
@@ -149,7 +148,7 @@ const EditCustomer = () => {
                           type="text"
                           className="form-control1"
                           id="name"
-                          defaultValue={name}
+                          value={name}
                           onChange={(e) => { setName(e.target.value) }}
                         />
                       </div>
@@ -163,7 +162,7 @@ const EditCustomer = () => {
                         type="text"
                         className="form-control1"
                         id="address"
-                        defaultValue={address}
+                        value={address}
                         onChange={(e) => { setAddress(e.target.value) }}
 
                       />
@@ -179,7 +178,7 @@ const EditCustomer = () => {
                           type="text"
                           className="form-control1"
                           id="email"
-                          defaultValue={email}
+                          value={email}
                           onChange={(e) => { setEmail(e.target.value) }}
 
                         />
@@ -196,7 +195,7 @@ const EditCustomer = () => {
                           type="text"
                           className="form-control1"
                           id="contact"
-                          defaultValue={contact}
+                          value={contact}
                           onChange={(e) => { setContact(e.target.value) }}
                         />
                       </div>
@@ -212,7 +211,7 @@ const EditCustomer = () => {
                           type="text"
                           className="form-control1"
                           id="city"
-                          defaultValue={city}
+                          value={city}
                           onChange={(e) => { setCity(e.target.value) }}
                         />
                       </div>

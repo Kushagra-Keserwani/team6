@@ -30,7 +30,7 @@ const fetchCustomerData = async () => {
       fetchCustomerData();
     }else{
       setCustomers([]);
-      Load();
+      //Load();
     }
   }, [accountnum]);
 
