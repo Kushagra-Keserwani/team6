@@ -5,7 +5,11 @@
     justify-content: start;
     align-items: center;
   }
-  
+  .heading {
+    font-size: 200%;
+    color:  #1a83ff;
+    margin-left: 5%;
+  }
   .menu-bars {
     margin-left: 2rem;
     font-size: 2rem;
