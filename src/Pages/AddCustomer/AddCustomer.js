@@ -73,11 +73,11 @@ async function save(event){
         setAddress("");
         setEmail("");
         setContact("");
-        setCardNumber("");
-        setPinNum("");
+        setCardNumber("0");
+        setPinNum("0000");
         setCity("");
-        setAccountType("");
-        setBalance("");
+        setAccountType("0");
+        setBalance("0");
 
         
     } catch(err){
