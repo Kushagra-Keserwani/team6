@@ -25,6 +25,13 @@ export const SidebarData = [
 
     }, 
     {
+        title: 'Edit Customer',
+        path: '/editCustomer',
+        icon: <AiIcons.AiOutlineEdit />,
+        cName: 'nav-text'
+
+    }, 
+    {
         title: 'Balance Check',
         path: '/balancecheck',
         icon: <AiIcons.AiFillDollarCircle />,
@@ -52,13 +59,7 @@ export const SidebarData = [
         cName: 'nav-text'
 
     }, 
-    {
-        title: 'Edit Customer',
-        path: '/editCustomer',
-        icon: <AiIcons.AiFillCreditCard />,
-        cName: 'nav-text'
-
-    }, {
+     {
         title: 'Logout',
         path:'/login',
         icon: <AiIcons.AiOutlineLogout></AiIcons.AiOutlineLogout>,

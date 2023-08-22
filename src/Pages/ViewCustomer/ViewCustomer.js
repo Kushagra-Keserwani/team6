@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import {useEffect, useState} from "react";
+import {Link} from "react-router-dom";
 import {BiEdit} from "react-icons/bi";
 import { AiFillDelete } from "react-icons/ai";
 import SideMenuBar from "./../../components/sidebar/index"
@@ -132,7 +133,9 @@ return (
                 {/* <td>{customer.accounttype}</td> */}
                 {/* <td>{customer.balance}</td> */}
                 <td>
-                    <BiEdit></BiEdit>
+                        <Link to= {`/editCustomer/${customer.accountnum}`}>
+                            <BiEdit></BiEdit>
+                        </Link>
                 </td>
                 <td>
                     <AiFillDelete

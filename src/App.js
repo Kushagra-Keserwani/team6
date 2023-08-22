@@ -22,7 +22,7 @@ function App() {
           <Route exact path="/*" element={<Login />}></Route>
           <Route exact path="/addCustomer" element={<AddCustomer />}></Route>
           <Route exact path="/viewCustomer" element={<ViewCustomer />}></Route>
-          <Route exact path="/editCustomer" element={<EditCustomer />}></Route>
+          <Route exact path="/editCustomer/:data?" element={<EditCustomer />}></Route>
           <Route exact path='/balancecheck' element={<BalanceCheck />}></Route>
           <Route exact path='/addTransactions' element={<AddTransactions />}></Route>
           <Route exact path='/transactions' element={<Transactions />}></Route>

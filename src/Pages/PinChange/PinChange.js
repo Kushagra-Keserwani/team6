@@ -29,16 +29,13 @@ const PinChange = () => {
     const validateOldPinandSetNewPin = async () => {
         if(Object.keys(customer).length > 0)
         {
-            console.log(customer);
-            console.log(typeof oldpin);
-            console.log(typeof newpin);
-            console.log(typeof customer.pinnum);
-            console.log(customer.pinnum == oldpin);
+
             if(customer.pinnum == oldpin)
             {
                 if(newpin===renewpin)
                 {
                     const setpinresult = await axios.patch(`https://localhost:7254/api/customer/SetPin/${accountNum}/${newpin}`);
+
                     if(setpinresult.data===true)
                     {
                         alert("Pin has been changed successfully!.");
@@ -56,6 +53,7 @@ const PinChange = () => {
                 }
             }
             else{
+                console.log(customer.pinnum,oldpin);
                 alert("Enter correct PIN number.");
                 setNewPin("");
                 setReNewPin("");
@@ -140,7 +138,7 @@ const PinChange = () => {
                                         <form>
                                             <div className="form-group">
                                                 <input
-                                                    type="text"
+                                                    type="password"
                                                     className="form-control1"
                                                     pattern = "[0-9]{4}"
                                                     title = "Pin should be 4 digit numeric characters."
@@ -158,7 +156,7 @@ const PinChange = () => {
                                     <form>
                                             <div className="form-group">
                                                 <input
-                                                    type="text"
+                                                    type="password"
                                                     className="form-control1"
                                                     id="newpin"
                                                     pattern = "[0-9]{4}"
@@ -176,7 +174,7 @@ const PinChange = () => {
                                     <form>
                                             <div className="form-group">
                                                 <input
-                                                    type="text"
+                                                    type="password"
                                                     className="form-control1"
                                                     id="renewpin"
                                                     pattern = "[0-9]{4}"

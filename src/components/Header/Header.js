@@ -31,7 +31,8 @@ const Header = () => {
 
         <Navbar style={{background:'#CD1409'}}>
         <Container>
-            <Navbar.Brand><h3 style={{color:'white'}}>ATM Banking System</h3></Navbar.Brand>
+            <Navbar.Brand>
+                <h3 style={{color:'white'}}>DOTBank</h3></Navbar.Brand>
             <Navbar.Toggle />
             <Navbar.Collapse className="justify-content-end" >
                 <Dropdown>

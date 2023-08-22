@@ -24,8 +24,10 @@ function SideMenuBar() {
         <>
             <div className='navbar'>
                 <Link to="#" className="menu-bars">
-                    <FaIcons.FaBars onClick={showSidebar} />
+                    <FaIcons.FaBars onClick={showSidebar} />                  
                 </Link>
+                {/* <div className='heading'><Link to='/home'>ATM Banking App</Link></div> */}
+
 
             </div>
             <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
