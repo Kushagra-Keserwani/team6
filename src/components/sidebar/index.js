@@ -12,6 +12,7 @@ function dumpToken(props){
     
     console.log("Logoooooooout");
     localStorage.removeItem("token");
+    localStorage.removeItem("role");
 }
 
 

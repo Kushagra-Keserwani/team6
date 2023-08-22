@@ -11,6 +11,7 @@ function Login() {
     const passwordConfirmRef = useRef()
     const loginEmailRef = useRef()
     const loginPasswordRef = useRef()
+    const [role,setRole] = useState("Admin")
     // const { signup, login } = useAuth()
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
@@ -25,9 +26,11 @@ function Login() {
             loginPasswordRef.current=passwordRef.current;
         try {
             setLoading(true)
+            console.log(role.current);
             await axios.post("https://localhost:7254/api/Auth/register",{
                 username: emailRef.current.value,
                 password: passwordRef.current.value,
+                role:role,
             }).then((response)=>{
                 console.log(response.data);
             });
@@ -51,7 +54,8 @@ function Login() {
                 password: loginPasswordRef.current.value,
             }).then((response)=>{
                 console.log(response.data);
-                localStorage.setItem("token",response.data);
+                localStorage.setItem("token",response.data['token']);
+                localStorage.setItem("role",response.data['role']);
             });
             // await login(loginEmailRef.current.value, loginPasswordRef.current.value)
             navigate("/home")
@@ -87,6 +91,20 @@ function Login() {
                             <div className="user-box">
                                 <input type="password" title="Confirm password" ref={passwordConfirmRef}  required />
                                 <label>Confirm Password</label>
+                            </div>
+                            
+                            <div className="user-box">
+                                {/* <input type="text" title="Role" ref={role}  required /> */}
+                                {/* <label>Role</label> */}
+                                <select value={role}
+                                className="form-control1"
+                                id="Role"
+                                onChange={(event) => {
+                                    (setRole(event.target.value))
+                                }}>
+                                <option value="Admin"> Admin</option>
+                                <option value="User"> User</option>
+                                </select>
                             </div>
                             {/* <Link to="/home"> */}
                             <button className="authBtn" disabled={loading} type="submit">Sign up</button>
