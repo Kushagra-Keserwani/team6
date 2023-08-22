@@ -44,17 +44,18 @@ const EditCustomer = () => {
     event.preventDefault();
     try {
       console.log(name, city, email, address, contact, accountNum);
-      await axios.patch("https://localhost:7254/api/customer/Updatecustomer/",
+      await axios.patch(`https://localhost:7254/api/customer/Updatecustomer/${accountNum}`,
         {
-            name: name,
-            address: address,
-            email: email,
-            contact: contact,
-            cardnumber: cardnumber,
-            pinnum : pinnum,
-            city:city,
-            accounttype:accounttype,
-            balance: balance,
+          accountnum: accountNum,
+          name: name,
+          address: address,
+          email: email,
+          contact: contact,
+          cardnumber: cardnumber,
+          pinnum: pinnum,
+          city: city,
+          accounttype: accounttype,
+          balance: balance,
         }
       );
       alert("Customer Updated.");
