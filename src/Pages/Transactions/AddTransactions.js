@@ -60,13 +60,13 @@ function AddTransactions() {
         setTransactionData(response.data);
       });
       alert("Transaction Done Successfully.");
-      setAccountNum("");
+      setAccountNum(localStorage['accNo']?localStorage['accNo']:0);
       setTransactionNo("");
       setAmount("");
-      setCurrency("");
-      setType("");
-      setDateTime("");
-      setRecipient("");
+      setCurrency("Dollar");
+      setType("D");
+      setDateTime("2023-08-21T04:50:14.170Z");
+      setRecipient("0");
 
     } catch (err) {
       alert(err);
