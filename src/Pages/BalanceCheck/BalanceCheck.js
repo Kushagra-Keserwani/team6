@@ -6,7 +6,7 @@ import { AiFillDelete } from "react-icons/ai";
 import SideMenuBar from "./../../components/sidebar/index"
 import SearchBar from "./../../components/searchbar/searchbar"
 
-function BalanceCheck() {    const [accountnum, setAccountNum] = useState("");
+function BalanceCheck() {    const [accountnum, setAccountNum] = useState(localStorage['accNo']?localStorage['accNo']:0);
 const [customers, setCustomers] = useState([]);
 
 const [isLoading, setIsLoading] = useState(false);
@@ -26,11 +26,12 @@ const fetchCustomerData = async () => {
     }};
 
   useEffect(() => {
-    if (accountnum) {
+    if (accountnum && accountnum!=0) {
       fetchCustomerData();
     }else{
       setCustomers([]);
-      Load();
+      if(localStorage['role']=="Admin"){
+        Load();}
     }
   }, [accountnum]);
 
@@ -48,7 +49,7 @@ return (
     <div>
         <SideMenuBar/>
    <div className="leftSpace">
-        <div className="container mt-5">
+        {localStorage['role']=="Admin" && <div className="container mt-5">
             <div class="row justify-content-center">
                 <div class="col-md-6">
                     <div class="card">
@@ -70,7 +71,7 @@ return (
 
                 </div>
             </div>
-        </div>
+        </div>}
         <div class="container mt-5">
             <h4 class="mb-3">Customer Details</h4>
 <table class="table table-bordered table-striped" align="center">

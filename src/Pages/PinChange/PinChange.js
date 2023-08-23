@@ -5,13 +5,13 @@ import { useEffect, useState } from "react";
 import SideMenuBar from "./../../components/sidebar/index";
 
 const PinChange = () => {
-    const [accountNum, setAccountNum] = useState("");
+    const [accountNum, setAccountNum] = useState(localStorage['accNo']?localStorage['accNo']:0);
     const [oldpin, setOldPin] = useState("");
     const [newpin, setNewPin] = useState("");
     const [renewpin, setReNewPin] = useState("");
     const [customer, setCustomerData] = useState({});
     const [isLoading, setIsLoading] = useState(false);
-
+    
     const fetchCustomerData = async () => {
     
         setIsLoading(true);
@@ -86,6 +86,7 @@ const PinChange = () => {
         <div>
             <SideMenuBar />
             <div className="leftSpace">
+                {localStorage['role']=="Admin" &&
                 <div className="container mt-5">
                     <div class="row justify-content-center">
                         <div class="col-md-6">
@@ -108,7 +109,7 @@ const PinChange = () => {
 
                         </div>
                     </div>
-                </div>
+                </div>}
 
                 {isLoading ? (
                     <p>Loading...</p>

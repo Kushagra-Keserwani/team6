@@ -5,7 +5,7 @@ import SideMenuBar from "../../components/sidebar";
 
 function Transactions()
 {
-    const [accountNum, setAccountNum] = useState("");
+    const [accountNum, setAccountNum] = useState(localStorage['accNo']?localStorage['accNo']:0);
     const [transactionNo, setTransactionNo] = useState("");
     const [amount, setAmount] = useState("");
     const [dateTime, setDateTime] = useState("");
@@ -37,7 +37,7 @@ function Transactions()
       };
     
       useEffect(() => {
-        if (accountNum) {
+        if (accountNum && accountNum!=0) {
           fetchTransactionData();
         }
         else{
@@ -55,6 +55,7 @@ function Transactions()
                     <div class="card">
                         <div class="card-body">
                             <form>
+            {localStorage['role']=="Admin" &&
             <div className="mb-3">
           <label class="form-label">Enter account number -</label>
           <input
@@ -63,7 +64,7 @@ function Transactions()
             placeholder="Type here..."
             value={accountNum}
             onChange={(e) => setAccountNum(e.target.value)}
-          /> </div>
+          /> </div>}
           <div className="mb-3">
           <label class="form-label">Enter Start Date -</label>
           <input

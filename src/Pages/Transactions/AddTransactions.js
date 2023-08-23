@@ -7,7 +7,7 @@ import { event } from "jquery";
 
 function AddTransactions() {
 
-  const [accountnum, setAccountNum] = useState("");
+  const [accountnum, setAccountNum] = useState(localStorage['accNo']?localStorage['accNo']:0);
   const [transactionNo, setTransactionNo] = useState("");
   const [amount, setAmount] = useState("");
   const [dateTime, setDateTime] = useState("2023-08-21T04:50:14.170Z");
@@ -163,6 +163,7 @@ function AddTransactions() {
                 }}
               />
             </div>
+            {localStorage['role']=="Admin" &&
             <div className="form-group">
               <label for="accountnum">Sender's Account Number:</label>
               <input
@@ -174,7 +175,7 @@ function AddTransactions() {
                   setAccountNum(event.target.value);
                 }}
               />
-            </div>
+            </div>}
             {type === "F" &&
             <div className="form-group">
               <label for="recipient">Recipient's Account Number</label>

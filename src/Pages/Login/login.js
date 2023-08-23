@@ -12,6 +12,7 @@ function Login() {
     const loginEmailRef = useRef()
     const loginPasswordRef = useRef()
     const [role,setRole] = useState("Admin")
+    const [accNo,setaccNo] = useState("0")
     // const { signup, login } = useAuth()
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
@@ -31,6 +32,7 @@ function Login() {
                 username: emailRef.current.value,
                 password: passwordRef.current.value,
                 role:role,
+                accNo:accNo,
             }).then((response)=>{
                 console.log(response.data);
             });
@@ -56,6 +58,7 @@ function Login() {
                 console.log(response.data);
                 localStorage.setItem("token",response.data['token']);
                 localStorage.setItem("role",response.data['role']);
+                localStorage.setItem("accNo",response.data['accNo']);
             });
             // await login(loginEmailRef.current.value, loginPasswordRef.current.value)
             navigate("/home")
@@ -106,6 +109,10 @@ function Login() {
                                 <option value="User"> User</option>
                                 </select>
                             </div>
+                            {role=="User" &&  <div className="user-box">
+                                <input type="text" title="accNo"  onChange={(event) => {setaccNo(event.target.value);}} required />
+                                <label>AccNo</label>
+                            </div>}
                             {/* <Link to="/home"> */}
                             <button className="authBtn" disabled={loading} type="submit">Sign up</button>
                             {/* </Link> */}

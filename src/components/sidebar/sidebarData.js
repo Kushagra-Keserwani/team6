@@ -11,13 +11,14 @@ export const SidebarData = [
         cName: 'nav-text'
 
     },
-    {
-        title: 'Add Customer',
-        path: '/addCustomer',
-        icon: <AiIcons.AiOutlineUserAdd></AiIcons.AiOutlineUserAdd>,
-        cName: 'nav-text'
+    // {
+    //     title: 'Add Customer',
+    //     path: '/addCustomer',
+    //     icon: <AiIcons.AiOutlineUserAdd></AiIcons.AiOutlineUserAdd>,
+    //     cName: 'nav-text'
 
-    }, {
+    // }, 
+    {
         title: 'View Customer',
         path: '/viewCustomer',
         icon: <AiIcons.AiOutlineFileSearch />,
