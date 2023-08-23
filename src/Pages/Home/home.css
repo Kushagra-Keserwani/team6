@@ -13,3 +13,19 @@ h1
 .container{
     padding: 10px 10px 10px 10px;
 }
+.cardButton{
+    background-color: #CD1409;
+}
+.options{
+   display: flex;
+   justify-content: center;
+    align-items: center;
+}
+.col{
+   
+    margin-bottom:20px;
+}
+
+.card-image{
+    height: 40vh;
+}
