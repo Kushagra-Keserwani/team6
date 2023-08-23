@@ -63,7 +63,7 @@ function Home() {
     
     </Row>
     <Row className="row">
-    <Col      md = {4} sm = {6} xs = {12} className="col">
+    {localStorage['role'] == "Admin" && <Col      md = {4} sm = {6} xs = {12} className="col">
     <Card     style   = {{ width: '18rem' }} >
     <Card.Img variant = "top" className = "card-image" src               = {addCustomer} />
       <Card.Body className="options">
@@ -74,7 +74,7 @@ function Home() {
         </Link>
       </Card.Body>
     </Card>
-    </Col>
+    </Col> }
     <Col      md = {4} sm = {6} xs = {12} className="col">
     <Card     style   = {{ width: '18rem' }} >
     <Card.Img variant = "top" className = "card-image" src               = {viewCustomer} />
