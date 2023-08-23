@@ -8,8 +8,8 @@ import { IconContext } from 'react-icons';
 import './sidebar.css';
 
 
-function dumpToken(props){
-    
+function dumpToken(props) {
+
     console.log("Logoooooooout");
     localStorage.removeItem("token");
     localStorage.removeItem("role");
@@ -25,7 +25,7 @@ function SideMenuBar() {
         <>
             <div className='navbar'>
                 <Link to="#" className="menu-bars">
-                    <FaIcons.FaBars onClick={showSidebar} />                  
+                    <FaIcons.FaBars onClick={showSidebar} />
                 </Link>
                 {/* <div className='heading'><Link to='/home'>ATM Banking App</Link></div> */}
 
@@ -38,23 +38,30 @@ function SideMenuBar() {
                             <AiIcons.AiOutlineClose />
                         </Link>
                     </li> */}
+                    {localStorage['role'] == "Admin" &&
+                        <li className='nav-text'>
+                            <Link to='/addCustomer'><AiIcons.AiOutlineUserAdd></AiIcons.AiOutlineUserAdd><span>Add Customer</span></Link></li>}
                     {SidebarData.map((item, index) => {
-                        {if(item.title=="Logout"){
-                        return (
-                            <li key={index} className={item.cName} onClick={() =>dumpToken(item.path)}>
-                                <Link to={item.path}>
-                                    {item.icon}
-                                    <span>{item.title}</span>
-                                </Link>
-                            </li>
-                        );}else{
-                            return(<li key={index} className={item.cName}>
-                            <Link to={item.path}>
-                                {item.icon}
-                                <span>{item.title}</span>
-                            </Link>
-                        </li>);
-                        }}
+                        {
+                            if (item.title == "Logout") {
+                                return (
+                                    <li key={index} className={item.cName} onClick={() => dumpToken(item.path)}>
+                                        <Link to={item.path}>
+                                            {item.icon}
+                                            <span>{item.title}</span>
+                                        </Link>
+                                    </li>
+                                );
+                            } else {
+
+                                return (<li key={index} className={item.cName}>
+                                    <Link to={item.path}>
+                                        {item.icon}
+                                        <span>{item.title}</span>
+                                    </Link>
+                                </li>);
+                            }
+                        }
                     })}
                 </ul>
             </nav>

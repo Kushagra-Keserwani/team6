@@ -1,13 +1,13 @@
 import React from "react";
 import axios from "axios";
 import {useEffect, useState} from "react";
-import {Link} from "react-router-dom";
 import {BiEdit} from "react-icons/bi";
 import { AiFillDelete } from "react-icons/ai";
 import SideMenuBar from "./../../components/sidebar/index"
 import SearchBar from "./../../components/searchbar/searchbar"
 
-function ViewCustomer() {    const [accountnum, setAccountNum] = useState("");
+function ViewCustomer() {    
+const [accountnum, setAccountNum] = useState(localStorage['accNo']?localStorage['accNo']:0);
 const [customers, setCustomers] = useState([]);
 
 const [isLoading, setIsLoading] = useState(false);
@@ -27,11 +27,12 @@ const fetchCustomerData = async () => {
     }};
 
   useEffect(() => {
-    if (accountnum) {
+    if (accountnum && accountnum!=0) {
       fetchCustomerData();
     }else{
       setCustomers([]);
-      Load();
+      if(localStorage['role']=="Admin"){
+      Load();}
     }
   }, [accountnum]);
 // useEffect(() => {
@@ -68,13 +69,15 @@ async function deleteCustomer(accountnum)
         console.log(response.data);
     });
     alert("Customer deleted successfully.");
-    Load();
+    if(localStorage['role']=="Admin"){
+        Load();}
 }
 
 return (
     <div>
         <SideMenuBar/>
    <div className="leftSpace">
+        {localStorage['role']=="Admin" &&
         <div className="container mt-5">
             <div class="row justify-content-center">
                 <div class="col-md-6">
@@ -97,7 +100,7 @@ return (
 
                 </div>
             </div>
-        </div>
+        </div>}
         <div class="container mt-5">
             <h4 class="mb-3">Customer Details</h4>
 <table class="table table-bordered table-striped" align="center">
@@ -133,9 +136,7 @@ return (
                 {/* <td>{customer.accounttype}</td> */}
                 {/* <td>{customer.balance}</td> */}
                 <td>
-                        <Link to= {`/editCustomer/${customer.accountnum}`}>
-                            <BiEdit></BiEdit>
-                        </Link>
+                    <BiEdit></BiEdit>
                 </td>
                 <td>
                     <AiFillDelete

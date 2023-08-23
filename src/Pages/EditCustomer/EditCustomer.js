@@ -10,7 +10,7 @@ const EditCustomer = () => {
   const {data} = useParams();
   //console.log(data);
   // const [data, setData] = useState(useParams());
-  const [accountNum, setAccountNum] = useState(data?data:"");
+  const [accountNum, setAccountNum] = useState(data?data:localStorage['accNo']);
   const [customer, setCustomerData] = useState({});
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
@@ -27,7 +27,14 @@ const EditCustomer = () => {
     setIsLoading(true);
 
     try {
-      const result = await axios.get(`https://localhost:7254/api/customer/Getcustomer/${accountNum}`);
+      let result
+      // if(localStorage['role']=='User'){
+      //   result = await axios.get(`https://localhost:7254/api/customer/Getcustomer/${localStorage['accNo']}`);
+      // }
+      // else{
+        result = await axios.get(`https://localhost:7254/api/customer/Getcustomer/${accountNum}`);
+      // }
+
       // setCustomerData(result.data);
       setName(result.data.name);
       setAddress(result.data.address);
@@ -100,7 +107,9 @@ const EditCustomer = () => {
   return (
     <div>
       <SideMenuBar />
+      
       <div className="leftSpace">
+      {localStorage['role']=="Admin" &&
         <div className="container mt-5">
           <div class="row justify-content-center">
             <div class="col-md-6">
@@ -123,7 +132,7 @@ const EditCustomer = () => {
 
             </div>
           </div>
-        </div>
+        </div>}
 
         {isLoading ? (
           <p>Loading...</p>
