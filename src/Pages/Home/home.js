@@ -7,6 +7,7 @@ import viewTransaction from "./viewTransaction.jpg";
 import viewCustomer from "./viewCustomer.png";
 import editCustomer from "./editCustomer.jpg";
 import addCustomer from "./addCustomer.jpg"
+import PinChange from "./PinChange.jpg"
 import Header from "../../components/Header/Header";
 import "./home.css"
 import { Card, Row, Col } from 'react-bootstrap'; // Import Card component from react-bootstrap
@@ -70,6 +71,18 @@ function Home() {
         <Link   to        = "/addCustomer">
         <button className = 'btn btn-danger btn-lg btn-block cardButton'>
               Add  Customer
+            </button>
+        </Link>
+      </Card.Body>
+    </Card>
+    </Col> }
+    {localStorage['role'] == "User" && <Col      md = {4} sm = {6} xs = {12} className="col">
+    <Card     style   = {{ width: '18rem' }} >
+    <Card.Img variant = "top" className = "card-image" src               = {PinChange} />
+      <Card.Body className="options">
+        <Link   to        = "/pinchange">
+        <button className = 'btn btn-danger btn-lg btn-block cardButton'>
+              Pin Change
             </button>
         </Link>
       </Card.Body>
