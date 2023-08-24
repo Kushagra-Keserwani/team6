@@ -11,6 +11,7 @@ import AddTransactions from './Pages/Transactions/AddTransactions';
 import BalanceCheck from './Pages/BalanceCheck/BalanceCheck';
 import PinChange from './Pages/PinChange/PinChange';
 import PrivateRoutes from './Pages/Login/PrivateRoutes';
+import ViewStatus from './Pages/ViewStatus/ViewStatus';
 import PrivateRoutesAdmin from './Pages/Login/PrivateRoutesAdmin';
 
 
@@ -30,7 +31,8 @@ function App() {
             <Route exact path='/pinchange' element={<PinChange />}></Route>
           </Route>  
           <Route element={<PrivateRoutesAdmin />}>  
-            <Route exact path="/addCustomer" element={<AddCustomer />}></Route>   
+            <Route exact path="/addCustomer" element={<AddCustomer />}></Route>
+            <Route exact path="/viewStatus" element={<ViewStatus />}></Route> 
           </Route>     
           <Route exact path="/*" element={<Login />}></Route>
         </Routes>
