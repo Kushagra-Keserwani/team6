@@ -12,6 +12,7 @@ import BalanceCheck from './Pages/BalanceCheck/BalanceCheck';
 import PinChange from './Pages/PinChange/PinChange';
 import PrivateRoutes from './Pages/Login/PrivateRoutes';
 import ViewStatus from './Pages/ViewStatus/ViewStatus';
+import Cheque from './Pages/Cheque/Cheque'
 import PrivateRoutesAdmin from './Pages/Login/PrivateRoutesAdmin';
 
 
@@ -33,6 +34,7 @@ function App() {
           <Route element={<PrivateRoutesAdmin />}>  
             <Route exact path="/addCustomer" element={<AddCustomer />}></Route>
             <Route exact path="/viewStatus" element={<ViewStatus />}></Route> 
+            <Route exact path="/cheque" element={<Cheque />}></Route>
           </Route>     
           <Route exact path="/*" element={<Login />}></Route>
         </Routes>
