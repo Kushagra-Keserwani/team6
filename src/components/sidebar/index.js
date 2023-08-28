@@ -35,7 +35,7 @@ function SideMenuBar(props) {
                         props.showSidebar();
                     }
                 }}>
-                    <li className='navbar-toggle'>
+                    <li className='navbar-toggle' onClick={props.showSidebar}>
                         <Link to='#' className='menu-bars'>
                             <AiIcons.AiOutlineClose />
                         </Link>
