@@ -26,12 +26,14 @@ function AddTransactions(props) {
       console.log("Status :" + error.response.status);
       if (error.response.status === 400 && error.response.data) {
         setErrors(error.response.data.errors);
-
       }
+      toast.error(error.response.data)
     } else if (error.request) { // The request was made but no response was received
       console.log(error.request);
+      toast.error("Transaction Failed.");
     } else {// Error on setting up the request
       console.log('Error', error.message);
+      toast.error("Transaction Failed.");
     }
   }
 
@@ -39,11 +41,6 @@ function AddTransactions(props) {
     event.preventDefault();
     try {
       //setDateTime("2023-08-21T04:50:14.170Z");
-      console.log(type)
-      if (!type) {
-        console.log("D");
-
-      }
       await axios.post("https://localhost:7254/api/transaction/Addtransaction", {
         accountnum: accountnum,
         amount: amount,
@@ -70,7 +67,6 @@ function AddTransactions(props) {
       setRecipient("0");
 
     } catch (err) {
-      toast.error("Transaction Failed.");
       console.log(err);
       errorFunc(err);
     }

@@ -30,7 +30,7 @@ function Cheques(props) {
       console.error('Error fetching customer data:', error);
     } finally {
       setIsLoading(false);
-      toast.success("Cheque Added Successfully.");
+      //toast.success("Cheque Added Successfully.");
     }
   };
 
