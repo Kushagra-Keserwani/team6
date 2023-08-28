@@ -4,6 +4,7 @@ import React, { useRef, useState } from "react"
 import Header from "../../components/Header/Header";
 // import { useAuth } from "../../contexts/AuthContext"
 import { Link, useNavigate } from "react-router-dom"
+import { toast } from 'react-toastify';
 
 function Login() {
     const emailRef = useRef()
@@ -21,7 +22,8 @@ function Login() {
         e.preventDefault()
 
         if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-            return alert("Passwords do not match")
+            toast.warn("Passwords do not match.")
+            return;
         }
             loginEmailRef.current=emailRef.current;
             loginPasswordRef.current=passwordRef.current;
@@ -35,6 +37,7 @@ function Login() {
                 accNo:accNo,
             }).then((response)=>{
                 console.log(response.data);
+                toast.success("Registered Successfully.");
             });
             handleLogin(e)
             // await signup(emailRef.current.value, passwordRef.current.value)
@@ -56,13 +59,14 @@ function Login() {
                 password: loginPasswordRef.current.value,
             }).then((response)=>{
                 console.log(response.data);
+                toast.success("Login Successfully.");
                 localStorage.setItem("token",response.data['token']);
                 localStorage.setItem("role",response.data['role']);
                 localStorage.setItem("accNo",response.data['accNo']);
+
             });
             // await login(loginEmailRef.current.value, loginPasswordRef.current.value)
             navigate("/home")
-            alert("Login Successfully.");
             //setUserName("");
             //setPassword("");
         } catch(err) {

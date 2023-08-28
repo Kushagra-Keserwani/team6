@@ -4,6 +4,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import SideMenuBar from "./../../components/sidebar/index";
 import { event } from "jquery";
+import { toast } from "react-toastify";
 
 function AddTransactions() {
 
@@ -58,8 +59,8 @@ function AddTransactions() {
 
         console.log(response.data);
         setTransactionData(response.data);
+        toast.success("Transaction Completed Successfully.");
       });
-      alert("Transaction Done Successfully.");
       setAccountNum(localStorage['accNo']?localStorage['accNo']:0);
       setTransactionNo("");
       setAmount("");
@@ -69,7 +70,8 @@ function AddTransactions() {
       setRecipient("0");
 
     } catch (err) {
-      alert(err);
+      toast.error("Transaction Failed.");
+      console.log(err);
       errorFunc(err);
     }
   }
