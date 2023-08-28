@@ -17,27 +17,25 @@ function dumpToken(props) {
 
 
 
-function SideMenuBar() {
-    const [sidebar, setSidebar] = useState(true);
+function SideMenuBar(props) {
 
-    const showSidebar = () => setSidebar(!sidebar);
     return (
         <>
             <div className='navbar'>
                 <Link to="#" className="menu-bars">
-                    <FaIcons.FaBars onClick={showSidebar} />
+                    <FaIcons.FaBars onClick={props.showSidebar} />
                 </Link>
                 {/* <div className='heading'><Link to='/home'>ATM Banking App</Link></div> */}
 
 
             </div>
-            <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-                <ul className='nav-menu-items' onClick={showSidebar}>
-                    {/* <li className='navbar-toggle'>
+            <nav className={props.sidebar ? 'nav-menu active' : 'nav-menu'}>
+                <ul className='nav-menu-items' onClick={props.showSidebar}>
+                    <li className='navbar-toggle'>
                         <Link to='#' className='menu-bars'>
                             <AiIcons.AiOutlineClose />
                         </Link>
-                    </li> */}
+                    </li>
                     {localStorage['role'] == "Admin" &&
                         <li className='nav-text'>
                             <Link to='/addCustomer'><AiIcons.AiOutlineUserAdd></AiIcons.AiOutlineUserAdd><span>Add Customer</span></Link></li>}

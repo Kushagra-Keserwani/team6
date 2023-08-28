@@ -4,7 +4,7 @@ import axios from "axios";
 import {useEffect, useState} from "react";
 import SideMenuBar from "./../../components/sidebar/index";
 
-function AddCustomer() {
+function AddCustomer(props) {
 
   const [accountnum, setAccountNum] = useState("");
   const [name, setName] = useState("");
@@ -153,7 +153,8 @@ async function save(event){
 //   }
   return (
     <div>
-    <SideMenuBar></SideMenuBar>
+    <SideMenuBar sidebar={props.sidebar} showSidebar={props.showSidebar}></SideMenuBar>
+            <div style={props.sidebar?props.leftStyle:null}>
       <body>
         <div className="container1">
           <h2>Add Customer Details</h2>
@@ -300,8 +301,10 @@ async function save(event){
                     <p className="error">{errors?.balance}</p>
             <button className="btn btn-primary" onClick={save}>Add</button>
           </form>
+        
         </div>
       </body>
+      </div>
     </div>
   );
 }
