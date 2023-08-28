@@ -4,7 +4,7 @@ import React, { useRef, useState } from "react"
 import Header from "../../components/Header/Header";
 // import { useAuth } from "../../contexts/AuthContext"
 import { Link, useNavigate } from "react-router-dom"
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 function Login() {
     const emailRef = useRef()
@@ -19,6 +19,10 @@ function Login() {
     const navigate = useNavigate()
 
     async function handleSignUp(e) {
+        if(emailRef.current.value == "" || passwordRef.current.value == "" || passwordConfirmRef.current.value == ""){
+            toast.warn("Please fill all the fields.")
+            return;
+        }
         e.preventDefault()
 
         if (passwordRef.current.value !== passwordConfirmRef.current.value) {
@@ -52,6 +56,10 @@ function Login() {
     }
 
     async function handleLogin(e) {
+        if(loginEmailRef.current.value == "" || loginPasswordRef.current.value == ""){
+            toast.warn("Please fill all the fields.")
+            return;
+        }
         e.preventDefault()
 
         try {
