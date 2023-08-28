@@ -4,7 +4,7 @@ import "../AddCustomer/AddCustomer.css";
 import { useEffect, useState } from "react";
 import SideMenuBar from "./../../components/sidebar/index";
 
-const PinChange = () => {
+const PinChange = (props) => {
     const [accountNum, setAccountNum] = useState(localStorage['accNo']?localStorage['accNo']:0);
     const [oldpin, setOldPin] = useState("");
     const [newpin, setNewPin] = useState("");
@@ -84,8 +84,8 @@ const PinChange = () => {
 
     return (
         <div>
-            <SideMenuBar />
-            <div className="leftSpace">
+             <SideMenuBar sidebar={props.sidebar} showSidebar={props.showSidebar}></SideMenuBar>
+            <div style={props.sidebar?props.leftStyle:null}>
                 {localStorage['role']=="Admin" &&
                 <div className="container mt-5">
                     <div class="row justify-content-center">

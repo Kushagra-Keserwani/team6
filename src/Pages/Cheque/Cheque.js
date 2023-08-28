@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import "../AddCustomer/AddCustomer.css";
 import SideMenuBar from "../../components/sidebar";
 
-function Cheques() {
+function Cheques(props) {
   const [accountNum, setAccountNum] = useState(localStorage['accNo'] ? localStorage['accNo'] : 0);
   const [ChequeNo, setChequeNo] = useState("");
   const [amount, setAmount] = useState("");
@@ -41,8 +41,8 @@ function Cheques() {
 
   return (
     <div>
-      <SideMenuBar />
-      <div className="leftSpace">
+ <SideMenuBar sidebar={props.sidebar} showSidebar={props.showSidebar}></SideMenuBar>
+            <div style={props.sidebar?props.leftStyle:null}>
       {localStorage['role'] == "Admin" &&
         <div className="container mt-5">
           <div class="row justify-content-center">
