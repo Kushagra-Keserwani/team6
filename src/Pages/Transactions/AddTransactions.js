@@ -79,23 +79,23 @@ function AddTransactions(props) {
   return (
     <div>
       <SideMenuBar sidebar={props.sidebar} showSidebar={props.showSidebar}></SideMenuBar>
-      <div style={props.sidebar ? props.leftStyle : null}>
-        <body>
-          <div className="container1">
-            <h2>Add Transactions</h2>
-            <form>
-              <div className="form-group">
-                <input
-                  type="text"
-                  className="form-control1"
-                  id="transactionNo"
-                  hidden value={transactionNo}
-                  onChange={(event) => {
-                    setTransactionNo(event.target.value);
-                  }}
-                />
-              </div>
-              {/* <div className="form-group">
+            <div style={props.sidebar?props.leftStyle:null}>
+      <body>
+        <div className="container1">
+          <h2>Add Transactions</h2>
+          <form>
+            <div className="form-group">
+              <input
+                type="text"
+                className="form-control1"
+                id="transactionNo"
+                hidden value={transactionNo}
+                onChange={(event) => {
+                  setTransactionNo(event.target.value);
+                }}
+              />
+            </div>
+            {/* <div className="form-group">
               <label for="dateTime">Date Time:</label>
               <input
                 type="text"
@@ -196,6 +196,7 @@ function AddTransactions(props) {
           </div>
         </body>
       </div>
+    </div>
     </div>
   );
 }
