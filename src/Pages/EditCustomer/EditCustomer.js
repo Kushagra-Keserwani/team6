@@ -6,7 +6,7 @@ import {useParams} from 'react-router-dom';
 import SideMenuBar from "./../../components/sidebar/index"
 import SearchBar from "../../components/searchbar/searchbar";
 
-const EditCustomer = () => {
+const EditCustomer = (props) => {
   const {data} = useParams();
   //console.log(data);
   // const [data, setData] = useState(useParams());
@@ -106,9 +106,8 @@ const EditCustomer = () => {
 
   return (
     <div>
-      <SideMenuBar />
-      
-      <div className="leftSpace">
+      <SideMenuBar sidebar={props.sidebar} showSidebar={props.showSidebar}></SideMenuBar>
+            <div style={props.sidebar?props.leftStyle:null}>
       {localStorage['role']=="Admin" &&
         <div className="container mt-5">
           <div class="row justify-content-center">

@@ -12,14 +12,16 @@ import Header from "../../components/Header/Header";
 import "./home.css"
 import { Card, Row, Col } from 'react-bootstrap'; // Import Card component from react-bootstrap
 
+
+
   
 
-function Home() {
+function Home(props) {
     return (
         <div className="home">
-            <SideMenuBar></SideMenuBar>
-            <div className="leftSpace">
-            <div className="container text-left mt-5">
+            <SideMenuBar sidebar={props.sidebar} showSidebar={props.showSidebar}></SideMenuBar>
+            <div style={props.sidebar?props.leftStyle:null}>
+            <div className="container text-left ">
                 <h4 class="display-6">Welcome to DOTBank, where your financial dreams come to life!</h4>
 
                 <div>

@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import "../AddCustomer/AddCustomer.css";
 import SideMenuBar from "../../components/sidebar";
 
-function Transactions()
+function Transactions(props)
 {
     const [accountNum, setAccountNum] = useState(localStorage['accNo']?localStorage['accNo']:0);
     const [transactionNo, setTransactionNo] = useState("");
@@ -47,8 +47,8 @@ function Transactions()
     
       return (
         <div>
-            <SideMenuBar/>
-        <div className="leftSpace">
+            <SideMenuBar sidebar={props.sidebar} showSidebar={props.showSidebar}></SideMenuBar>
+            <div style={props.sidebar?props.leftStyle:null}>
             <div className="container mt-5">
             <div class="row justify-content-center">
                 <div class="col-md-6">

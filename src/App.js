@@ -1,5 +1,5 @@
 import './App.css';
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from "./Pages/Home/home";
 import Login from "./Pages/Login/login";
@@ -15,9 +15,39 @@ import ViewStatus from './Pages/ViewStatus/ViewStatus';
 import Cheque from './Pages/Cheque/Cheque'
 import PrivateRoutesAdmin from './Pages/Login/PrivateRoutesAdmin';
 
-
+const leftStyle = {
+  margin: "20px",
+  marginLeft: "270px"
+}
 
 function App() {
+
+  const [sidebar, setSidebar] = useState(true);
+
+
+
+  const showSidebar = () => setSidebar(!sidebar);
+
+
+  const handleResize = () => {
+    if (window.innerWidth <= 768) {
+      setSidebar(false);
+    } else {
+      setSidebar(true);
+    }
+  };
+
+  useEffect(() => {
+    // Initial check on mount
+    handleResize();
+
+    // Event listener for window resize
+    window.addEventListener('resize', handleResize);
+
+    
+  }, []);
+
+
   return (
     <div className='App'>
       <BrowserRouter>
