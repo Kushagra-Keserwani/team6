@@ -38,6 +38,10 @@ function AddTransactions(props) {
   }
 
   async function saveT(event) {
+    if(!accountnum || !amount || !dateTime || !type || !recipient || !currency){
+      toast.warn("Please fill all the fields.");
+      return;
+    }
     event.preventDefault();
     try {
       //setDateTime("2023-08-21T04:50:14.170Z");
