@@ -6,7 +6,7 @@ import { AiFillDelete } from "react-icons/ai";
 import SideMenuBar from "./../../components/sidebar/index"
 import SearchBar from "./../../components/searchbar/searchbar"
 
-function BalanceCheck() {    const [accountnum, setAccountNum] = useState(localStorage['accNo']?localStorage['accNo']:0);
+function BalanceCheck(props) {    const [accountnum, setAccountNum] = useState(localStorage['accNo']?localStorage['accNo']:0);
 const [customers, setCustomers] = useState([]);
 
 const [isLoading, setIsLoading] = useState(false);
@@ -47,8 +47,8 @@ async function Load(){
 
 return (
     <div>
-        <SideMenuBar/>
-   <div className="leftSpace">
+        <SideMenuBar sidebar={props.sidebar} showSidebar={props.showSidebar}></SideMenuBar>
+            <div style={props.sidebar?props.leftStyle:null}>
         {localStorage['role']=="Admin" && <div className="container mt-5">
             <div class="row justify-content-center">
                 <div class="col-md-6">
