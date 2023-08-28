@@ -53,18 +53,18 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<PrivateRoutes />}>
-            <Route exact path="/home" element={<Home />}></Route>
-            <Route exact path="/viewCustomer" element={<ViewCustomer />}></Route>
-            <Route exact path="/editCustomer/:data?" element={<EditCustomer />}></Route>
-            <Route exact path='/balancecheck' element={<BalanceCheck />}></Route>
-            <Route exact path='/addTransactions' element={<AddTransactions />}></Route>
-            <Route exact path='/transactions' element={<Transactions />}></Route>
-            <Route exact path='/pinchange' element={<PinChange />}></Route>
-            <Route exact path="/cheque" element={<Cheque />}></Route>
+            <Route exact path="/home" element={<Home  sidebar={sidebar} showSidebar={showSidebar} leftStyle={leftStyle} />}></Route>
+            <Route exact path="/viewCustomer" element={<ViewCustomer  sidebar={sidebar} showSidebar={showSidebar} leftStyle={leftStyle} />}></Route>
+            <Route exact path="/editCustomer/:data?" element={<EditCustomer  sidebar={sidebar} showSidebar={showSidebar} leftStyle={leftStyle} />}></Route>
+            <Route exact path='/balancecheck' element={<BalanceCheck  sidebar={sidebar} showSidebar={showSidebar} leftStyle={leftStyle} />}></Route>
+            <Route exact path='/addTransactions' element={<AddTransactions  sidebar={sidebar} showSidebar={showSidebar} leftStyle={leftStyle} />}></Route>
+            <Route exact path='/transactions' element={<Transactions  sidebar={sidebar} showSidebar={showSidebar} leftStyle={leftStyle} />}></Route>
+            <Route exact path='/pinchange' element={<PinChange  sidebar={sidebar} showSidebar={showSidebar} leftStyle={leftStyle} />}></Route>
+            <Route exact path="/cheque" element={<Cheque  sidebar={sidebar} showSidebar={showSidebar} leftStyle={leftStyle} />}></Route>
           </Route>  
           <Route element={<PrivateRoutesAdmin />}>  
-            <Route exact path="/addCustomer" element={<AddCustomer />}></Route>
-            <Route exact path="/viewStatus" element={<ViewStatus />}></Route> 
+            <Route exact path="/addCustomer" element={<AddCustomer  sidebar={sidebar} showSidebar={showSidebar} leftStyle={leftStyle} />}></Route>
+            <Route exact path="/viewStatus" element={<ViewStatus  sidebar={sidebar} showSidebar={showSidebar} leftStyle={leftStyle} />}></Route> 
           </Route>     
           <Route exact path="/*" element={<Login />}></Route>
         </Routes>

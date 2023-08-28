@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import SideMenuBar from "./../../components/sidebar/index";
 import { event } from "jquery";
 
-function AddTransactions() {
+function AddTransactions(props) {
 
   const [accountnum, setAccountNum] = useState(localStorage['accNo']?localStorage['accNo']:0);
   const [transactionNo, setTransactionNo] = useState("");
@@ -76,7 +76,8 @@ function AddTransactions() {
 
   return (
     <div>
-      <SideMenuBar></SideMenuBar>
+      <SideMenuBar sidebar={props.sidebar} showSidebar={props.showSidebar}></SideMenuBar>
+            <div style={props.sidebar?props.leftStyle:null}>
       <body>
         <div className="container1">
           <h2>Add Transactions</h2>
@@ -192,6 +193,7 @@ function AddTransactions() {
           </form>
         </div>
       </body>
+    </div>
     </div>
   );
 }
