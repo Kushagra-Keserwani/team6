@@ -30,7 +30,11 @@ function SideMenuBar(props) {
 
             </div>
             <nav className={props.sidebar ? 'nav-menu active' : 'nav-menu'}>
-                <ul className='nav-menu-items' onClick={props.showSidebar}>
+                <ul className='nav-menu-items' onClick={() => {
+                    if (window.innerWidth <= 768) {
+                        props.showSidebar();
+                    }
+                }}>
                     <li className='navbar-toggle'>
                         <Link to='#' className='menu-bars'>
                             <AiIcons.AiOutlineClose />
@@ -42,7 +46,7 @@ function SideMenuBar(props) {
                     {localStorage['role'] == "Admin" &&
                         <li className='nav-text'>
                             <Link to='/viewStatus'><AiIcons.AiFillAccountBook></AiIcons.AiFillAccountBook><span>User Activity</span></Link></li>}
-                    
+
                     {SidebarData.map((item, index) => {
                         {
                             if (item.title == "Logout") {
