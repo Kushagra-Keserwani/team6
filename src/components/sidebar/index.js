@@ -42,9 +42,7 @@ function SideMenuBar(props) {
                     {localStorage['role'] == "Admin" &&
                         <li className='nav-text'>
                             <Link to='/viewStatus'><AiIcons.AiFillAccountBook></AiIcons.AiFillAccountBook><span>User Activity</span></Link></li>}
-                    {localStorage['role'] == "Admin" &&
-                        <li className='nav-text'>
-                            <Link to='/cheque'><AiIcons.AiFillCheckCircle></AiIcons.AiFillCheckCircle><span>Cheques</span></Link></li>}
+                    
                     {SidebarData.map((item, index) => {
                         {
                             if (item.title == "Logout") {

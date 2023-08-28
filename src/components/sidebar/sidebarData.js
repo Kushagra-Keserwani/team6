@@ -54,6 +54,13 @@ export const SidebarData = [
 
     }, 
     {
+        title: 'Cheque',
+        path: '/cheque',
+        icon: <AiIcons.AiFillCheckCircle/>,
+        cName: 'nav-text'
+
+    }, 
+    {
         title: 'Pin Change',
         path: '/pinchange',
         icon: <AiIcons.AiFillLock />,
