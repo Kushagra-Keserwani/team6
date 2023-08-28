@@ -3,6 +3,7 @@ import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import { Link } from 'react-router-dom';
 import * as FaIcons from "react-icons/fa"
 import * as AiIcons from 'react-icons/ai';
+import * as BiIcons from 'react-icons/bi';
 import { SidebarData } from './sidebarData.js';
 import { IconContext } from 'react-icons';
 import './sidebar.css';
@@ -27,7 +28,15 @@ function SideMenuBar(props) {
                 </Link>
                 {/* <div className='heading'><Link to='/home'>ATM Banking App</Link></div> */}
 
-
+                <div className="user-icon">
+                    <div className="dropdown">
+                        <button className="dropbtn"><BiIcons.BiUserCircle style={{fontSize:'30px'}}></BiIcons.BiUserCircle></button>
+                        <div className="dropdown-content">
+                           <Link to='/home'><div>Home</div></Link>
+                            <Link to='/logout'><div>Logout</div></Link>
+                        </div>
+                    </div>
+                </div>
             </div>
             <nav className={props.sidebar ? 'nav-menu active' : 'nav-menu'}>
                 <ul className='nav-menu-items' onClick={() => {

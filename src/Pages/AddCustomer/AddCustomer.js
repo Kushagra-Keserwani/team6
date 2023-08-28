@@ -3,6 +3,7 @@ import './AddCustomer.css';
 import axios from "axios";
 import {useEffect, useState} from "react";
 import SideMenuBar from "./../../components/sidebar/index";
+import { toast } from "react-toastify";
 
 function AddCustomer(props) {
 
@@ -63,11 +64,11 @@ async function save(event){
             },
         })
         .then((response)=>{
-            
+            toast.success("Customer Added Successfully.");
             console.log(response.data);
             setUsers(response.data);
         });;
-        alert("Customer Added Successfully.");
+        // alert("Customer Added Successfully.");
         setAccountNum("");
         setName("");
         setAddress("");
@@ -81,6 +82,7 @@ async function save(event){
 
         
     } catch(err){
+      toast.error("Failed to add customer.")
         alert(err);
         errorFunc(err);
     }

@@ -5,6 +5,7 @@ import {BiEdit} from "react-icons/bi";
 import { AiFillDelete } from "react-icons/ai";
 import SideMenuBar from "./../../components/sidebar/index"
 import SearchBar from "./../../components/searchbar/searchbar"
+import { toast } from "react-toastify";
 
 function ViewStatus(props) {    
 const [accountnum, setAccountNum] = useState(localStorage['accNo']?localStorage['accNo']:0);
@@ -77,10 +78,9 @@ async function changestatus(event,accountnum,status)
         },
     })
     .then((response)=>{
-        
+        toast.success("Customer status Updated.");
         console.log(response.data);
     });
-    alert("Status Changed");
     if(localStorage['role']=="Admin"){
         Load();}
 }

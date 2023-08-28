@@ -6,6 +6,7 @@ import {BiEdit} from "react-icons/bi";
 import { AiFillDelete } from "react-icons/ai";
 import SideMenuBar from "./../../components/sidebar/index"
 import SearchBar from "./../../components/searchbar/searchbar"
+import { toast } from "react-toastify";
 
 function ViewCustomer(props) {    
 const [accountnum, setAccountNum] = useState(localStorage['accNo']?localStorage['accNo']:0);
@@ -24,6 +25,7 @@ const fetchCustomerData = async () => {
       setCustomers([result.data]);
       
     } catch (error) {
+        toast.error("Customer not found.");
       console.error('Error fetching customer data:', error);
     }};
 
@@ -66,10 +68,10 @@ async function deleteCustomer(accountnum)
         },
     })
     .then((response)=>{
-        
+        toast.success("Customer deleted successfully.");
         console.log(response.data);
     });
-    alert("Customer deleted successfully.");
+    
     if(localStorage['role']=="Admin"){
         Load();}
 }

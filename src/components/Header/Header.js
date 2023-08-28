@@ -23,6 +23,7 @@ const Header = () => {
             alert(err.message.substring(
                 err.message.indexOf(":") + 1,
                 err.message.lastIndexOf("(")))
+            
         }
     }
     

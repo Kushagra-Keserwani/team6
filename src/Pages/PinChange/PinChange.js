@@ -3,6 +3,7 @@ import axios from "axios";
 import "../AddCustomer/AddCustomer.css";
 import { useEffect, useState } from "react";
 import SideMenuBar from "./../../components/sidebar/index";
+import { toast } from "react-toastify";
 
 const PinChange = (props) => {
     const [accountNum, setAccountNum] = useState(localStorage['accNo']?localStorage['accNo']:0);
@@ -38,7 +39,7 @@ const PinChange = (props) => {
 
                     if(setpinresult.data===true)
                     {
-                        alert("Pin has been changed successfully!.");
+                        toast.success("PIN changed successfully.");
                         setOldPin("");
                         setNewPin("");
                         setReNewPin("");
@@ -47,14 +48,14 @@ const PinChange = (props) => {
                     }
                 }
                 else{
-                    alert("New PIN does not match.");
+                    toast.warn("New PIN and Re-entered PIN does not match.");
                     setNewPin("");
                     setReNewPin("");
                 }
             }
             else{
                 console.log(customer.pinnum,oldpin);
-                alert("Enter correct PIN number.");
+                toast.warn("Old PIN does not match.");
                 setNewPin("");
                 setReNewPin("");
                 setOldPin("");
@@ -62,7 +63,7 @@ const PinChange = (props) => {
         }
         else
         {
-            alert("Enter a valid account number.")
+            toast.warn("Account number does not exist.");
             setNewPin("");
             setReNewPin("");
             setOldPin("");            
@@ -84,7 +85,7 @@ const PinChange = (props) => {
 
     return (
         <div>
-             <SideMenuBar sidebar={props.sidebar} showSidebar={props.showSidebar}></SideMenuBar>
+            <SideMenuBar sidebar={props.sidebar} showSidebar={props.showSidebar}></SideMenuBar>
             <div style={props.sidebar?props.leftStyle:null}>
                 {localStorage['role']=="Admin" &&
                 <div className="container mt-5">

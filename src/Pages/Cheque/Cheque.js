@@ -1,7 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+
+import SideMenuBar from "./../../components/sidebar/index";
+import { event } from "jquery";
+import { toast } from "react-toastify";
 import "../AddCustomer/AddCustomer.css";
-import SideMenuBar from "../../components/sidebar";
 
 function Cheques(props) {
   const [accountNum, setAccountNum] = useState(localStorage['accNo'] ? localStorage['accNo'] : 0);
@@ -27,6 +30,7 @@ function Cheques(props) {
       console.error('Error fetching customer data:', error);
     } finally {
       setIsLoading(false);
+      toast.success("Cheque Added Successfully.");
     }
   };
 
