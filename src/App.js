@@ -30,11 +30,11 @@ function App() {
             <Route exact path='/addTransactions' element={<AddTransactions />}></Route>
             <Route exact path='/transactions' element={<Transactions />}></Route>
             <Route exact path='/pinchange' element={<PinChange />}></Route>
+            <Route exact path="/cheque" element={<Cheque />}></Route>
           </Route>  
           <Route element={<PrivateRoutesAdmin />}>  
             <Route exact path="/addCustomer" element={<AddCustomer />}></Route>
             <Route exact path="/viewStatus" element={<ViewStatus />}></Route> 
-            <Route exact path="/cheque" element={<Cheque />}></Route>
           </Route>     
           <Route exact path="/*" element={<Login />}></Route>
         </Routes>
