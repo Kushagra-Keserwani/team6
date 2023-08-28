@@ -197,7 +197,6 @@ function AddTransactions(props) {
         </body>
       </div>
     </div>
-    </div>
   );
 }
 
