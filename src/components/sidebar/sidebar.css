@@ -4,6 +4,7 @@
     display: flex;
     align-items: center;
   }
+
   .heading {
     font-size: 200%;
     color:  #1a83ff;
@@ -30,6 +31,8 @@
   .nav-menu.active {
     left: 0;
     transition: 350ms;
+    overflow-x: auto;
+    overflow-y: auto;
   }
   
   .nav-text {

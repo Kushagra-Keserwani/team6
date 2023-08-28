@@ -40,11 +40,6 @@ function AddCustomer(props) {
   useEffect(() => {
 });
 
-async function Load(){
-    const result = await axios.get("https://localhost:7254/api/customer/GetAll");
-    setUsers(result.data);
-    console.log(result.data);
-}
 
 async function save(event){
     event.preventDefault();
@@ -83,7 +78,7 @@ async function save(event){
         
     } catch(err){
       toast.error("Failed to add customer.")
-        alert(err);
+        // alert(err);
         errorFunc(err);
     }
 }
