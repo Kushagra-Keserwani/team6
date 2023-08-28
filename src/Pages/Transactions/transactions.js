@@ -109,11 +109,15 @@ function Transactions(props)
                 </tr>
             </thead>
             {transactions.map(function fn(transaction){
+              let custyle = {color:'green'}
+              if(transaction.type=="Withdraw" || transaction.type=="Currency Withdraw" || (transaction.type=="Fund Transfer" && transaction.accountnum==accountNum)){
+                custyle={color:'red'}
+              }
                 return (
                     <tbody>
                         <tr>
                             <th scope="row">{transaction.transactionNo}</th>
-                            <td>{transaction.amount}</td>
+                            <td style={custyle}>{transaction.amount}</td>
                             <td>{transaction.type}</td>
                             <td>{transaction.currency}</td>
                             <td>{transaction.accountnum}</td>

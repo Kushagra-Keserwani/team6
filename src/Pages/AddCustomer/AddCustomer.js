@@ -12,11 +12,11 @@ function AddCustomer(props) {
   const [address, setAddress] = useState("");
   const [email, setEmail] = useState("");
   const [contact, setContact] = useState("");
-  const [cardnumber, setCardNumber] = useState("0");
-  const [pinnum, setPinNum] = useState("0000");
+  const [cardnumber, setCardNumber] = useState("");
+  const [pinnum, setPinNum] = useState("");
   const [city, setCity] = useState("");
   const [accounttype, setAccountType] = useState("0");
-  const [balance, setBalance] = useState("0");
+  const [balance, setBalance] = useState("");
   const [customers, setUsers] = useState([]);
   const [errors, setErrors] = useState(null);
 
@@ -44,6 +44,19 @@ function AddCustomer(props) {
 async function save(event){
     event.preventDefault();
     try{
+      if(cardnumber==""){
+        toast.error("Enter Card Number")
+        return
+      }
+      if(pinnum==""){
+        toast.error("Enter Pin Number")
+        return
+      }
+      
+      if(balance=="" || balance<0){
+        toast.error("Invalid Balance")
+        return
+      }
         await axios.post("https://localhost:7254/api/customer/Addcustomer",{
             name: name,
             address: address,
@@ -69,16 +82,18 @@ async function save(event){
         setAddress("");
         setEmail("");
         setContact("");
-        setCardNumber("0");
-        setPinNum("0000");
+        setCardNumber("");
+        setPinNum("");
         setCity("");
         setAccountType("0");
-        setBalance("0");
+        setBalance("");
 
         
     } catch(err){
       toast.error("Failed to add customer.")
-        // alert(err);
+
+        //alert(err);
+
         errorFunc(err);
     }
 }
@@ -172,6 +187,7 @@ async function save(event){
               <label for="name">Name:</label>
               <input
                         type="text"
+                        placeholder="Name"
                         className="form-control1"
                         id="name"
                         value ={name}
@@ -183,6 +199,7 @@ async function save(event){
               <label for="email">Email:</label>
               <input 
                         type="email"
+                        placeholder="Email"
                         className="form-control1"
                         id="email"
                         value={email}
@@ -196,6 +213,7 @@ async function save(event){
               <label for="mobile">Mobile:</label>
               <input 
                         type="text"
+                        placeholder="Mobile"
                         className="form-control1"
                         id="mobile"
                         value={contact}
@@ -209,6 +227,7 @@ async function save(event){
               <label for="address">Address:</label>
               <textarea 
                         type="text"
+                        placeholder="Address"
                         className="form-control1"
                         id="address"
                         rows="4"
@@ -223,6 +242,7 @@ async function save(event){
               <label for="cardnumber">Card Number:</label>
               <input 
                         type="text"
+                        placeholder="88888888"
                         className="form-control1"
                         id="cardnumber"
                         value={cardnumber}
@@ -236,6 +256,7 @@ async function save(event){
                         <label for="pinnum">Pin Number:</label>
                         <input
                         type="text"
+                        placeholder="8888"
                         className="form-control1"
                         id="pinnum"
                         value={pinnum}
@@ -250,6 +271,7 @@ async function save(event){
                         <label for="city">City:</label>
                         <input 
                         type="text"
+                        placeholder="City"
                         className="form-control1"
                         id="city"
                         value={city}
