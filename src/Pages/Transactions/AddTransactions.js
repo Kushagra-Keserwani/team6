@@ -6,9 +6,9 @@ import SideMenuBar from "./../../components/sidebar/index";
 import { event } from "jquery";
 import { toast } from "react-toastify";
 
-function AddTransactions() {
+function AddTransactions(props) {
 
-  const [accountnum, setAccountNum] = useState(localStorage['accNo']?localStorage['accNo']:0);
+  const [accountnum, setAccountNum] = useState(localStorage['accNo'] ? localStorage['accNo'] : 0);
   const [transactionNo, setTransactionNo] = useState("");
   const [amount, setAmount] = useState("");
   const [dateTime, setDateTime] = useState("2023-08-21T04:50:14.170Z");
@@ -18,15 +18,15 @@ function AddTransactions() {
   const [transactions, setTransactionData] = useState([]);
   const [errors, setErrors] = useState(null);
 
-  
-  function errorFunc(error){
+
+  function errorFunc(error) {
     if (error.response) { // status code out of the range of 2xx
 
-      console.log("Data :" , error.response.data);
+      console.log("Data :", error.response.data);
       console.log("Status :" + error.response.status);
-      if(error.response.status === 400 && error.response.data){
-          setErrors(error.response.data.errors);
-          
+      if (error.response.status === 400 && error.response.data) {
+        setErrors(error.response.data.errors);
+
       }
     } else if (error.request) { // The request was made but no response was received
       console.log(error.request);
@@ -34,13 +34,13 @@ function AddTransactions() {
       console.log('Error', error.message);
     }
   }
- 
+
   async function saveT(event) {
     event.preventDefault();
     try {
       //setDateTime("2023-08-21T04:50:14.170Z");
       console.log(type)
-      if(!type){
+      if (!type) {
         console.log("D");
 
       }
@@ -61,7 +61,7 @@ function AddTransactions() {
         setTransactionData(response.data);
         toast.success("Transaction Completed Successfully.");
       });
-      setAccountNum(localStorage['accNo']?localStorage['accNo']:0);
+      setAccountNum(localStorage['accNo'] ? localStorage['accNo'] : 0);
       setTransactionNo("");
       setAmount("");
       setCurrency("Dollar");
@@ -78,23 +78,24 @@ function AddTransactions() {
 
   return (
     <div>
-      <SideMenuBar></SideMenuBar>
-      <body>
-        <div className="container1">
-          <h2>Add Transactions</h2>
-          <form>
-            <div className="form-group">
-              <input
-                type="text"
-                className="form-control1"
-                id="transactionNo"
-                hidden value={transactionNo}
-                onChange={(event) => {
-                  setTransactionNo(event.target.value);
-                }}
-              />
-            </div>
-            {/* <div className="form-group">
+      <SideMenuBar sidebar={props.sidebar} showSidebar={props.showSidebar}></SideMenuBar>
+      <div style={props.sidebar ? props.leftStyle : null}>
+        <body>
+          <div className="container1">
+            <h2>Add Transactions</h2>
+            <form>
+              <div className="form-group">
+                <input
+                  type="text"
+                  className="form-control1"
+                  id="transactionNo"
+                  hidden value={transactionNo}
+                  onChange={(event) => {
+                    setTransactionNo(event.target.value);
+                  }}
+                />
+              </div>
+              {/* <div className="form-group">
               <label for="dateTime">Date Time:</label>
               <input
                 type="text"
@@ -108,41 +109,41 @@ function AddTransactions() {
               }
               />
             </div> */}
-            <div class="dropdown">
-            <div className="form-group">
-              <label for="type">Type:</label>
-                <select value={type}
-                id="type"
-                  className="form-control1"
-                  onChange={(event) => {
-                    setType(event.target.value)
-                  }}>
-                  <option value="D"> Deposit</option>
-                  <option value="W"> Withdraw</option>
-                  <option value="F"> Fund Transfer</option>
-                  <option value="CED"> Currency Exchange Deposit</option>
-                  <option value="CEW"> Currency Exchange Withdraw</option>
+              <div class="dropdown">
+                <div className="form-group">
+                  <label for="type">Type:</label>
+                  <select value={type}
+                    id="type"
+                    className="form-control1"
+                    onChange={(event) => {
+                      setType(event.target.value)
+                    }}>
+                    <option value="D"> Deposit</option>
+                    <option value="W"> Withdraw</option>
+                    <option value="F"> Fund Transfer</option>
+                    <option value="CED"> Currency Exchange Deposit</option>
+                    <option value="CEW"> Currency Exchange Withdraw</option>
 
-                </select>
-            </div>
-            </div>
-            {(type==='CED' || type==='CEW') &&
-            <div className="form-group">
-              <label for="currency">Currency: </label>
-                <select value={currency}
-                id="currency"
-                className="form-control1"
-                  onChange={(event) => {
-                    setCurrency(event.target.value)
-                  }}>
-                  <option value="Dollar"> Dollar</option>
-                  <option value="Pound"> Pound</option>
-                  <option value="Euro"> Euro</option>
-                  <option value="Yen"> Yen</option>
-                </select>
-             
+                  </select>
+                </div>
+              </div>
+              {(type === 'CED' || type === 'CEW') &&
+                <div className="form-group">
+                  <label for="currency">Currency: </label>
+                  <select value={currency}
+                    id="currency"
+                    className="form-control1"
+                    onChange={(event) => {
+                      setCurrency(event.target.value)
+                    }}>
+                    <option value="Dollar"> Dollar</option>
+                    <option value="Pound"> Pound</option>
+                    <option value="Euro"> Euro</option>
+                    <option value="Yen"> Yen</option>
+                  </select>
 
-                {/* <label for="currency">Currency:</label>
+
+                  {/* <label for="currency">Currency:</label>
               <input
                         type="text"
                         className="form-control1"
@@ -151,49 +152,50 @@ function AddTransactions() {
                         onChange={(event) => {
                             setCurrency(event.target.value);}}
                      /> */}
-            </div>
-                          }
-            <div className="form-group">
-              <label for="amount">Amount:</label>
-              <input
-                type="amount"
-                className="form-control1"
-                id="amount"
-                value={amount}
-                onChange={(event) => {
-                  setAmount(event.target.value);
-                }}
-              />
-            </div>
-            {localStorage['role']=="Admin" &&
-            <div className="form-group">
-              <label for="accountnum">Sender's Account Number:</label>
-              <input
-                type="text"
-                className="form-control1"
-                id="accountnum"
-                value={accountnum}
-                onChange={(event) => {
-                  setAccountNum(event.target.value);
-                }}
-              />
-            </div>}
-            {type === "F" &&
-            <div className="form-group">
-              <label for="recipient">Recipient's Account Number</label>
-              <input
-                type="text"
-                className="form-control1"
-                id="recipient"
-                value={recipient}
-                onChange={(event) => {
-                  setRecipient(event.target.value);
-                }} />
-            </div>}
-            <button className="btn btn-primary" onClick={saveT}>Add</button>
-          </form>
-        </div>
-      </body>
+                </div>
+              }
+              <div className="form-group">
+                <label for="amount">Amount:</label>
+                <input
+                  type="amount"
+                  className="form-control1"
+                  id="amount"
+                  value={amount}
+                  onChange={(event) => {
+                    setAmount(event.target.value);
+                  }}
+                />
+              </div>
+              {localStorage['role'] == "Admin" &&
+                <div className="form-group">
+                  <label for="accountnum">Sender's Account Number:</label>
+                  <input
+                    type="text"
+                    className="form-control1"
+                    id="accountnum"
+                    value={accountnum}
+                    onChange={(event) => {
+                      setAccountNum(event.target.value);
+                    }}
+                  />
+                </div>}
+              {type === "F" &&
+                <div className="form-group">
+                  <label for="recipient">Recipient's Account Number</label>
+                  <input
+                    type="text"
+                    className="form-control1"
+                    id="recipient"
+                    value={recipient}
+                    onChange={(event) => {
+                      setRecipient(event.target.value);
+                    }} />
+                </div>}
+              <button className="btn btn-primary" onClick={saveT}>Add</button>
+            </form>
+          </div>
+        </body>
+      </div>
     </div>
   );
 }

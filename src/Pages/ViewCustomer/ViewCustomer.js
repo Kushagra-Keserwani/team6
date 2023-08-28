@@ -67,10 +67,10 @@ async function deleteCustomer(accountnum)
         },
     })
     .then((response)=>{
-        
+        toast.success("Customer deleted successfully.");
         console.log(response.data);
     });
-    alert("Customer deleted successfully.");
+    
     if(localStorage['role']=="Admin"){
         Load();}
 }

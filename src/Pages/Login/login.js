@@ -44,6 +44,7 @@ function Login() {
             //navigate("/")
         } catch (err) {
             toast.error("Failed to create an account.")
+            console.log(err);
             // alert(err)
         }
 
@@ -91,7 +92,7 @@ function Login() {
                             <label for="chk" className="sig">Sign up</label>
                             <div className="user-box">
                                 <input type="text" title="Email" ref={emailRef} required />
-                                <label>Email</label>
+                                <label>Username</label>
                             </div>
                             <div className="user-box">
                                 <input type="password" title="Password" ref={passwordRef} required />

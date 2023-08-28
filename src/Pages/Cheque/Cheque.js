@@ -4,6 +4,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import SideMenuBar from "./../../components/sidebar/index";
 import { event } from "jquery";
+import { toast } from "react-toastify";
 
 function Cheque() {
 
@@ -49,18 +50,19 @@ function Cheque() {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       }).then((response) => {
-
+        toast.success("Cheque Added Successfully.");
         console.log(response.data);
         setChequeData(response.data);
       });
-      alert("Cheque Added Successfully.");
+      
       setAccountNum(localStorage['accNo']?localStorage['accNo']:0);
       setChequeNo("");
       setAmount("");
       setStatus("InProgress");
 
     } catch (err) {
-      alert(err);
+      toast.error("Failed to Add Cheque.");
+      console.log(err);
       errorFunc(err);
     }
   }
